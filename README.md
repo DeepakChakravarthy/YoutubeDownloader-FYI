@@ -1,1 +1,1 @@
-echo "# YoutubeDownloader-FYI"
+YoutubeDownloader-FYI
