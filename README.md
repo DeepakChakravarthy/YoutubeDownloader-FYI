@@ -1,9 +1,13 @@
 YoutubeDownloader-FYI
 
-REQUIRED PACKAGES
-	1)pytube
+---------------------------------------------------------
+**REQUIRED PACKAGES**
+* **pytube**
 
-FEATUERES OF YOUTUBE DOWNLOADER 
+To Install the Package `pip install pytube3`
+
+-------------------------------------------------
+**FEATUERES OF YOUTUBE DOWNLOADER**
 
 	1. Direct Youtube Video Download with URL
 	2. Completely Download Youtube Playlist
