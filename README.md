@@ -6,7 +6,7 @@
 
 To Install the Package `pip install pytube3`
 
--------------------------------------------------
+--------------------------------------------------------
 **FEATUERES OF YOUTUBE DOWNLOADER**
 
 	1. Direct Youtube Video Download with URL
@@ -18,3 +18,11 @@ To Run Local place the Required Folder Files and Main Python Files in the Same L
 <h2>------------Demo of Running------------</h3>
 
 ![MainScreen](https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/ScreenRec.gif?raw=true)
+
+----------------------------------------------------------
+**Upcoming Features**
+
+	1.Facebook Video Downloader
+	2.Tiktok Video Downloader
+	3.Twitter Resourse Downloader
+----------------------------------------------------------
