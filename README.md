@@ -17,7 +17,7 @@ To Run Local place the Required Folder Files and Main Python Files in the Same L
 
 <h2>------------Demo of Running------------</h3>
 
-![MainScreen](https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/ScreenRec.gif?raw=true)
+<img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/ScreenRec.gif?raw=true" width="600" height="350">
 
 ----------------------------------------------------------
 **Upcoming Features**
