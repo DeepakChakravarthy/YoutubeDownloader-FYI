@@ -56,7 +56,7 @@ def get_fetch():
         messagebox.showwarning(" FYI. ", "Cancelled")
         top.destroy
         sys.exit()
-        import YouTubeScreen
+        import YoutubeScreen
 downbtn = Button(top, text = "Download",
                   command = get_fetch,
                   activebackground = "lightgreen",
@@ -65,5 +65,11 @@ downbtn = Button(top, text = "Download",
 name = Label(top, text="Enter the Link to Download",
              font=('Comic Sans MS',14)).place(x =60,y=200)
 label = Label(top)
+def on_close():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    top.destroy()
+
+top.protocol("WM_DELETE_WINDOW",on_close)
 top.mainloop()
 #--------------------------------------------------------------------------#

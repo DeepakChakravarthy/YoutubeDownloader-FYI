@@ -44,7 +44,7 @@ def get_fetch():
         dirname = filedialog.askdirectory(parent=Screen, initialdir="/",title='Please select a directory')
         if (dirname):
             try:
-                playlist = Playlist(var1.get())
+                playlist = pytube.Playlist(var1.get())
                 messagebox.showinfo("Download","Downloading...")
                 playlist.download_all(dirname)
                 messagebox.showinfo(" Downloading.. ", "Thank You.")
@@ -56,7 +56,7 @@ def get_fetch():
         messagebox.showwarning(" FYI. ", "Cancelled")
         Screen.destroy
         sys.exit()
-        import YouTubeScreen
+        import Playlist
 downbtn = Button(Screen, text = "Download",
                   command = get_fetch,
                   activebackground = "lightgreen",
@@ -65,5 +65,12 @@ downbtn = Button(Screen, text = "Download",
 name = Label(Screen, text="Enter the Link to Download",
              font=('Comic Sans MS',14)).place(x =60,y=200)
 label = Label(Screen)
+
+def on_close():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    Screen.destroy()
+
+Screen.protocol("WM_DELETE_WINDOW",on_close)
 Screen.mainloop()
 #---------------------------------------------------------------------------------#
