@@ -1,17 +1,18 @@
 #-------------------Files Required-----------------------#
+
 import os
 import pytube
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
 from pytube import YouTube
+
 #-------------------------------------------#
 Display = Toplevel()
 def windows():#Support For Background Image
     window = Toplevel()
     window.mainloop()
     window.withdraw()
-#--------------------------------------------#
 #-------------------Screen-------------------#
 Display.title("FYI Download Manager :")
 Display.geometry("900x600")
@@ -37,6 +38,7 @@ cancelbtn = Button(Display,text="Quit",
                                                    width=200, height=30 )
 #---------------------------Fetch From YouTube--------------------------#
 def get_fetch():
+    Selection =var.get()
     try:
         if (var1==None):
             print("error")
@@ -44,9 +46,13 @@ def get_fetch():
         if (dirname):
             try:
                 link=YouTube(var1.get())
-                format_a=link.streams.filter(only_audio=True)
-                messagebox.showinfo("Download","Downloading...")
-                format_a[0].download(dirname)
+                format_a=link.streams.filter(only_audio=True).all()
+                if(Selection==1):       #mp4
+                    messagebox.showinfo("Download","Downloading...")
+                    format_a[0].download(dirname)
+                else:                   #webm
+                    messagebox.showinfo("Download","Downloading...")
+                    format_a[1].download(dirname)
                 messagebox.showinfo(" Downloading.. ", "Thank You.")
             except:
                 messagebox.showwarning(" FYI.. ", "Failed")
@@ -64,12 +70,15 @@ downbtn = Button(Display, text = "Download",
                                                    width = 200, height = 30 )
 name = Label(Display, text="Enter the Link to Download",
              font=('Comic Sans MS',14)).place(x =60,y=200)
+#-------------------------------Audio format options----------------------------------------#
+var = IntVar()
+R1 = Radiobutton(Display,text = "MP4 Audio ",variable = var,value=1,command=get_fetch).place(x=700,y=300)
+R2 = Radiobutton(Display,text = "WEBM",variable = var,value=2,command=get_fetch).place(x=700,y=350)
 label = Label(Display)
-
 def on_close():
     python = sys.executable
     os.execl(python, python, * sys.argv)
     Display.destroy()
 Display.protocol("WM_DELETE_WINDOW",on_close)
 Display.mainloop()
-#-------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------------#
