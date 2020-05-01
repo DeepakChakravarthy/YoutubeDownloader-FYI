@@ -75,5 +75,10 @@ var = IntVar()
 R1 = Radiobutton(Display,text = "MP4 Audio ",variable = var,value=1,command=get_fetch).place(x=700,y=300)
 R2 = Radiobutton(Display,text = "WEBM",variable = var,value=2,command=get_fetch).place(x=700,y=350)
 label = Label(Display)
+def on_close():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    Display.destroy()
+Display.protocol("WM_DELETE_WINDOW",on_close)
 Display.mainloop()
 #--------------------------------------------------------------------------------------------#
