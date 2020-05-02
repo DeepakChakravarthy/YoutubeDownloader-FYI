@@ -31,11 +31,11 @@ w.pack()
 window.geometry("900x600")
 window.resizable(0,0)
 window.title("Youtube Downloader")
-button1 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Youtube",command =button1,fg= "white",  bg="#4f0505",
+button1 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Youtube",command =button1,fg= "white",  bg="#4f0505",cursor = 'hand2',
 activebackground = "pink",activeforeground = "Blue").place(x = 200, y = 80,height = 50, width = 300)
-button2 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Playlist",command =button2,fg= "white",  bg="#4f0505",activebackground = "pink",
+button2 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Playlist",command =button2,cursor = 'hand2',fg= "white",  bg="#4f0505",activebackground = "pink",
 activeforeground = "blue").place(x = 300, y = 280,height = 50, width = 300)
-button3 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Only Audio",command =button3,fg= "white",  bg="#4f0505",activebackground = "pink",
+button3 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Only Audio",command =button3,cursor = 'hand2',fg= "white",  bg="#4f0505",activebackground = "pink",
 activeforeground = "blue").place(x = 400, y = 480,height = 50, width = 300)
 window.protocol("WM_DELETE_WINDOW",close_btn)
 window.mainloop()

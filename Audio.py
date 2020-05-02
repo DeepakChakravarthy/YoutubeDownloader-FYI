@@ -31,7 +31,7 @@ def close_btn():
 var1 = StringVar()
 large_font = ('Verdana',15)
 url = Entry(Display,textvariable= var1,font=large_font).place(x=60, y=300,width=500,height=30)
-cancelbtn = Button(Display,text="Quit",
+cancelbtn = Button(Display,text="Quit",cursor = 'hand2',
                   command=close_btn,
                   activebackground="lightgreen",
                   activeforeground="blue").place(x = 60, y = 450,
@@ -64,7 +64,7 @@ def get_fetch():
         sys.exit()
         import Audio
 downbtn = Button(Display, text = "Download",
-                  command = get_fetch,
+                  command = get_fetch,cursor = 'hand2',
                   activebackground = "lightgreen",
                   activeforeground = "blue").place(x = 630, y = 450,
                                                    width = 200, height = 30 )
