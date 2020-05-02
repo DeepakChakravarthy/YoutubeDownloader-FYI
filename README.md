@@ -1,4 +1,7 @@
-<h1>YoutubeDownloader-FYI</h1>
+<h1>YoutubeDownloader-FYI</h1> 
+
+[![CodeFactor](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi/badge)](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi)
+
 
 ---------------------------------------------------------
 **REQUIRED PACKAGES**
