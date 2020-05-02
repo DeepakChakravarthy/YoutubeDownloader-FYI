@@ -64,7 +64,7 @@ def get_fetch():
             messagebox.showwarning(" FYI. ", "Cancelled")
     except:
         messagebox.showwarning(" FYI. ", "Cancelled")
-        top.destroy
+        top.destroy()
         sys.exit()
         import YoutubeScreen
 downbtn = Button(top, text = "Download",
