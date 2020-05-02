@@ -1,6 +1,7 @@
 #-----------------------Files To be Imported-------------------------#
 import tkinter
 from tkinter import *
+from tkinter import messagebox
 window = Tk()
 def background():#For Images
     top =Toplevel()
@@ -16,6 +17,12 @@ def button2():
 def button3():
     window.withdraw()
     import Audio
+#-----------Close Function--------------#
+def close_btn():
+    if messagebox.askyesno("FYI...", "Are you Sure you want to exit") == True:
+            window.withdraw()
+            window.destroy()
+            sys.exit()
 #--------------------Buttons And Screen --------------------------#
 window.iconbitmap('YoutubeDownloader.ico')
 photo = PhotoImage(file = "mainbg.png")
@@ -30,6 +37,6 @@ button2 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Playl
 activeforeground = "blue").place(x = 300, y = 280,height = 50, width = 300)
 button3 = Button(window,font= ('Comic Sans MS',14,'bold'),text = "Download Only Audio",command =button3,fg= "white",  bg="#4f0505",activebackground = "pink",
 activeforeground = "blue").place(x = 400, y = 480,height = 50, width = 300)
-window.config(bg="black")
+window.protocol("WM_DELETE_WINDOW",close_btn)
 window.mainloop()
 #-------------------------------------------------------------------#

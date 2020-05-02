@@ -88,7 +88,6 @@ R3 = Radiobutton(top,text = "low",variable = var,value=3,command=get_fetch).plac
 #------------------------back button--------------------------------------#
 back = Button(top,text = "back",command = back).place(x = 30, y =35)
 label = Label(top)
-
 #--------------------------------------------------------------------------#
 def on_close():
     python = sys.executable
