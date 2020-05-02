@@ -38,7 +38,6 @@ cancelbtn = Button(top,text="Quit",
 #--------------Fetching Part from Youtube----------------------#
 def get_fetch():
     resolution = var.get()
-    print(var.get())
     try:
         if (var1==None):
             print("error")
@@ -46,7 +45,6 @@ def get_fetch():
         if (dirname):
             try:
                 yt = pytube.YouTube(var1.get())
-                #video = yt.filter(progressive=True).all()
                 if(resolution == 1):
                   messagebox.showinfo("Download","Downloading...")
                   video = yt.streams.get_by_itag(136)            
@@ -76,19 +74,19 @@ downbtn = Button(top, text = "Download",
                                                    width = 200, height = 30 )
 name = Label(top, text="Enter the Link to Download",
              font=('Comic Sans MS',14)).place(x =60,y=200)
-def back():
-  top.withdraw()
-  import mainscreen
-#----------------back button---------------#
+
 #-----------------radio button for video resolution----------------------#
 var = IntVar()
 R1 = Radiobutton(top,text = "High",variable = var,value=1,command=get_fetch).place(x = 700,y = 300)
 R2 = Radiobutton(top,text = "Good",variable = var,value=2,command=get_fetch).place(x = 700,y = 350)
 R3 = Radiobutton(top,text = "low",variable = var,value=3,command=get_fetch).place(x = 700,y = 400)
 #------------------------back button--------------------------------------#
+def back():
+  top.withdraw()
+  import mainscreen
 back = Button(top,text = "back",command = back).place(x = 30, y =35)
 label = Label(top)
-#--------------------------------------------------------------------------#
+#-----------------------------Close Function------------------------------------------#
 def on_close():
     python = sys.executable
     os.execl(python, python, * sys.argv)
