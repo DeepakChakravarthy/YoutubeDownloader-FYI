@@ -31,7 +31,7 @@ var1 = StringVar()
 large_font = ('Verdana',15)
 url = Entry(top,textvariable= var1,font=large_font).place(x=60, y=300,width=500,height=30)
 cancelbtn = Button(top,text="Quit",
-                  command=close_btn,
+                  command=close_btn,cursor = 'hand2',
                   activebackground="lightgreen",
                   activeforeground="blue").place(x = 60, y = 450,
                                                    width=200, height=30 )
@@ -68,7 +68,7 @@ def get_fetch():
         sys.exit()
         import YoutubeScreen
 downbtn = Button(top, text = "Download",
-                  command = get_fetch,
+                  command = get_fetch,cursor = 'hand2',
                   activebackground = "lightgreen",
                   activeforeground = "blue").place(x = 630, y = 450,
                                                    width = 200, height = 30 )
@@ -84,7 +84,7 @@ R3 = Radiobutton(top,text = "low",variable = var,value=3,command=get_fetch).plac
 def back():
   top.withdraw()
   import mainscreen
-back = Button(top,text = "back",command = back).place(x = 30, y =35)
+back = Button(top,text = "back",command = back,cursor = 'hand2').place(x = 30, y =35)
 label = Label(top)
 #-----------------------------Close Function------------------------------------------#
 def on_close():
