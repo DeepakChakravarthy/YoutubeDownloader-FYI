@@ -37,16 +37,28 @@ cancelbtn = Button(top,text="Quit",
                                                    width=200, height=30 )
 #--------------Fetching Part from Youtube----------------------#
 def get_fetch():
+    resolution = var.get()
+    print(var.get())
     try:
         if (var1==None):
             print("error")
         dirname = filedialog.askdirectory(parent=top, initialdir="/",title='Please select a directory')
         if (dirname):
             try:
-                youtube = pytube.YouTube(var1.get())
-                messagebox.showinfo("Download","Downloading...")
-                video = youtube.streams.first()
-                video.download(dirname)
+                yt = pytube.YouTube(var1.get())
+                #video = yt.filter(progressive=True).all()
+                if(resolution == 1):
+                  messagebox.showinfo("Download","Downloading...")
+                  video = yt.streams.get_by_itag(136)            
+                  video.download(dirname)
+                elif(resolution == 2):
+                  messagebox.showinfo("Download","Downloading...")
+                  video = yt.streams.first()
+                  video.download(dirname)
+                else:
+                  messagebox.showinfo("Download","Downloading...")
+                  video = yt.streams.get_by_itag(160)
+                  video.download(dirname)
                 messagebox.showinfo(" Downloading.. ", "Thank You.")
             except:
                 messagebox.showwarning(" FYI.. ", "Failed")
@@ -56,7 +68,7 @@ def get_fetch():
         messagebox.showwarning(" FYI. ", "Cancelled")
         top.destroy
         sys.exit()
-        import YouTubeScreen
+        import YoutubeScreen
 downbtn = Button(top, text = "Download",
                   command = get_fetch,
                   activebackground = "lightgreen",
@@ -64,6 +76,25 @@ downbtn = Button(top, text = "Download",
                                                    width = 200, height = 30 )
 name = Label(top, text="Enter the Link to Download",
              font=('Comic Sans MS',14)).place(x =60,y=200)
+def back():
+  top.withdraw()
+  import mainscreen
+#----------------back button---------------#
+#-----------------radio button for video resolution----------------------#
+var = IntVar()
+R1 = Radiobutton(top,text = "High",variable = var,value=1,command=get_fetch).place(x = 700,y = 300)
+R2 = Radiobutton(top,text = "Good",variable = var,value=2,command=get_fetch).place(x = 700,y = 350)
+R3 = Radiobutton(top,text = "low",variable = var,value=3,command=get_fetch).place(x = 700,y = 400)
+#------------------------back button--------------------------------------#
+back = Button(top,text = "back",command = back).place(x = 30, y =35)
 label = Label(top)
+
+#--------------------------------------------------------------------------#
+def on_close():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    top.destroy()
+
+top.protocol("WM_DELETE_WINDOW",on_close)
 top.mainloop()
 #--------------------------------------------------------------------------#
