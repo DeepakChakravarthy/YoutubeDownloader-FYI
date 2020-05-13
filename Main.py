@@ -56,7 +56,7 @@ def get_fetch():
     Selection = A_Audio.get()
     #pb.start()
     try:
-        if (var1==None):
+        if var1 is None:
             print("error")
         dirname = filedialog.askdirectory(parent=tab1, initialdir="/", title='Please select a directory')
         if (dirname):
