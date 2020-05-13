@@ -2,8 +2,8 @@
 
 [![GitHub license](https://img.shields.io/github/license/DeepakChakravarthy/YoutubeDownloader-FYI)](https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/LICENSE)
 [![CodeFactor](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi/badge)](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi)
-
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master)
 
 
 ---------------------------------------------------------
@@ -32,3 +32,4 @@ To Run Local place the Required Folder Files and Main Python Files in the Same L
 	2.Tiktok Video Downloader
 	3.Twitter Resourse Downloader
 ----------------------------------------------------------
+<h3><a href="https://bit.ly/site-fyit">Click here to Visit Us..</a></h3>
