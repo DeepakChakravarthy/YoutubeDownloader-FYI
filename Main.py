@@ -1,6 +1,4 @@
 # ------------------Import Files-----------------------------------------
-
-
 import os
 import time
 import pytube
@@ -19,10 +17,8 @@ from tkinter import ttk
 # Toplevel is used for Supporting the Background Image
 top = tk.Tk()
 tabControl = ttk.Notebook(top)
-
 DisFont = font = ('Comic Sans MS', 16)
 SubFont = font = ('Comic Sans MS', 12)
-# self.progressBar()
 tab1 = ttk.Frame(tabControl)
 tabControl.add(tab1, text='Youtube')
 
@@ -30,15 +26,15 @@ tab2 = ttk.Frame(tabControl)
 tabControl.add(tab2, text='Facebook',)
 
 tabControl.pack(expand=1, fill="both")
-top.iconbitmap('YoutubeDownloader.ico')         # Icon
+top.iconbitmap('Assets/YoutubeDownloader.ico')     # Icon
 top.title("FYI Download Manager :")             # Title
 top.geometry("800x500")                         # Resolution
 
-photo = PhotoImage(file="youtube_bg.png")
+photo = PhotoImage(file="Assets/youtube_bg.png")
 w = Label(tab1, image=photo)
 w.pack()
 
-photo2 = PhotoImage(file="facebook_bg.png")
+photo2 = PhotoImage(file="Assets/facebook_bg.png")
 w2 = Label(tab2, image=photo2)
 w2.pack()
 top.resizable(0, 0)                             # Disable the Maximize
@@ -60,13 +56,6 @@ cancelbtn = Button(top, text="Quit", font=DisFont, cursor='hand2',
             command=close_btn, activebackground="lightgreen",
             activeforeground="blue").place(x=60, y=430, width=200, height=30)
 
-# ----------------------Progress Loader-------------------------------------
-def pb_bar():
-    progress_bar = ttk.Progressbar(tab1,
-        orient='horizontal', length=500, mode='determinate')
-    progress_bar.place(x=60, y=140)
-    progress_bar.start()
-
 # --------------Fetching Part from Youtube----------------------------------
 def get_fetch():
     resolution = Rvideo.get()
@@ -84,26 +73,33 @@ def get_fetch():
                 if resolution <= 3:
                     yt = pytube.YouTube(var1.get())
                     if resolution == 1:
-                        pb_bar()
+                        progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                        progress_bar.place(x=60,y=140)
+                        progress_bar.start()
                         messagebox.showinfo("Download",
                             "Downloading.. Please Wait for a Minute.")
-                        video = yt.streams.get_by_itag(136)
+                        video = yt.streams.get_by_itag(22)
                         video.download(dirname)
-                        # messagebox.showinfo(" Downloading.. ", "Thank You.")
                     elif resolution == 2:
-                        # messagebox.showinfo("Download","Downloading...")
+                        progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                        progress_bar.place(x=60,y=140)
+                        progress_bar.start()
+                        messagebox.showinfo("Download","Downloading...")
                         video = yt.streams.first()
                         video.download(dirname)
-                        # messagebox.showinfo(" Downloading.. ", "Thank You.")
                     elif resolution == 3:
-                        # messagebox.showinfo("Download","Downloading...")
-                        video = yt.streams.get_by_itag(160)
+                        progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                        progress_bar.place(x=60,y=140)
+                        progress_bar.start()
+                        messagebox.showinfo("Download","Downloading...")
+                        video = yt.streams.get_by_itag(36)
                         video.download(dirname)
-                        # messagebox.showinfo(" Downloading.. ", "Thank You.")
-
                 # Download Playlist
                 if Select == 1:
                     playlist = pytube.Playlist(var1.get())
+                    progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                    progress_bar.place(x=60,y=140)
+                    progress_bar.start()
                     playlist.populate_video_urls()          # To load bulk list
                     messagebox.showinfo("Download", "Downloading...")
                     playlist.download_all(dirname)
@@ -112,21 +108,29 @@ def get_fetch():
                 if Selection <= 2:
                     link = YouTube(var1.get())
                     format_a = link.streams.filter(only_audio=True).all()
-                    if Selection == 1:                  # mp4
+                    if Selection == 1:
+                        # mp4
+                        progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                        progress_bar.place(x=60,y=140)
+                        progress_bar.start()
                         messagebox.showinfo("Download", "Downloading...")
                         format_a[0].download(dirname)
                     elif Selection == 2:                # webm
+                        progress_bar = ttk.Progressbar(tab1, orient = 'horizontal', length = 500, mode = 'determinate')
+                        progress_bar.place(x=60,y=140)
+                        progress_bar.start()
                         messagebox.showinfo("Download", "Downloading...")
                         format_a[1].download(dirname)
-                pb_bar.stop()
+                
                 messagebox.showinfo("Downloading.. ", "Thank You.")
-            except:
-                pb_bar.stop()
+            except Exception as a:
+                #print(a)
                 messagebox.showwarning(" FYI.. ", "Failed")
         else:
             messagebox.showwarning(" FYI. ", "Cancelled")
-    except:
+    except Exception as a:
         messagebox.showwarning(" FYI. ", "Cancelled")
+        #print(a)
         sys.exit()
 
 downbtn = Button(tab1, text="Download", font=DisFont,
@@ -191,13 +195,10 @@ F2 = Radiobutton(tab2, text="Low", cursor='hand2', font=SubFont,
                 variable=fb_link, value=2, bg="#075C90",
                 fg="black").place(x=200, y=200)
 top.mainloop()
-
 # -----------------------------Close Function--------------------------------
 def on_close():
     python = sys.executable
     os.execl(python, python, * sys.argv)
     top.destroy()
-
 top.protocol("WM_DELETE_WINDOW", on_close)
-
 # ---------------------------------------------------------------------------
