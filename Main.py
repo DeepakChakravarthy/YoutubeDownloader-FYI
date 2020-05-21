@@ -10,12 +10,14 @@ from tkinter import PhotoImage,Label,StringVar,Entry,Button,IntVar,\
 Radiobutton,messagebox,filedialog
 import tkinter as tk
 from tkinter import ttk
+import clipboard
 # -------------------------------------------------------------------------#
 # Toplevel is used for Supporting the Background Image
 top = tk.Tk()
 tabControl = ttk.Notebook(top)
 DisFont = font = ('Comic Sans MS', 16)
 SubFont = font = ('Comic Sans MS', 12)
+
 # ------------TAB PROCESS----------------------------------
 tab1 = ttk.Frame(tabControl)
 
@@ -43,7 +45,7 @@ photo2 = PhotoImage(file="Assets/facebook_bg.png")
 w2 = Label(tab2, image=photo2)
 w2.pack()
 
-top.resizable(0, 0)                             # Disable the Maximize
+top.resizable(0, 0)
 
 # -----------Close Function--------------------------------------------------
 def close_btn():
@@ -55,15 +57,39 @@ def close_btn():
 # ---------------------------------------------------------------------------
 var1 = StringVar()
 large_font = ('Verdana', 15)
-url = Entry(tab1, textvariable=var1,
+url = Entry(top, textvariable=var1,
                     font=large_font)
-url.place(x=60, y=100, width=500, height=30)
+url.place(x=20, y=100, width=500, height=30)
 
 cancelbtn = Button(top, text="Quit", font=DisFont, cursor='hand2',
             command=close_btn, activebackground="lightgreen",
             activeforeground="blue")
 cancelbtn.place(x=60, y=430, width=200, height=30)
-
+#---Auto Paste Without Using the Function----#
+temp = clipboard.paste()
+url.insert('end', temp)
+#fburl.insert('end',temp)
+var1.set(temp)
+#-- Auto paste Function-----#
+def paste():
+    variable = clipboard.paste()
+    url.insert('end', variable)
+    #fburl.insert('end',variable)
+    var1.set(variable)                         # Disable the Maximize
+#---Clear Function-----#
+def e1_delete():
+    url.delete(0,'end')
+#--------------Button for Paste and Clear----#
+def toggle(tog=[0]):
+    tog[0] = not tog[0]
+    if tog[0]:
+        t_btn.config(text='paste')
+        e1_delete()
+    else:
+        t_btn.config(text='clear')
+        paste()
+t_btn = tk.Button(top,text="Clear", width=8, command=toggle)
+t_btn.place(x=530,y=100)
 # --------------Fetching Part from Youtube----------------------------------
 def get_fetch():
     resolution = Rvideo.get()
@@ -145,7 +171,7 @@ downbtn = Button(tab1, text="Download", font=DisFont,
         command=get_fetch, cursor='hand2', activebackground="lightgreen",
         activeforeground="blue")
 downbtn.place(x=500, y=405, width=200, height=30)
-name = Label(tab1, text="Enter the Link to Download",
+name = Label(top, text="Enter the Link to Download",
         font=('Comic Sans MS', 16), bg="#520B00", fg="White")
 name.place(x=60, y=60)
 
@@ -193,32 +219,47 @@ R7.place(x=420, y=200)
 
 # ======================= Facebook Control ==================================
 
-fb_line = StringVar()
-fb_url = Entry(tab2, textvariable=fb_line,
-                    font=large_font)
-fb_url.place(x=60, y=100, width=500, height=30)
+#burl = Entry(tab2, textvariable=Var1,
+#                    font=large_font)
+#fburl.place(x=60, y=100, width=500, height=30)
 
-fb_downbtn = Button(tab2, text="Download", font=DisFont,
-         cursor='hand2', activebackground="lightgreen",
-        activeforeground="blue")
-fb_downbtn.place(x=500, y=405, width=200, height=30)
-fb_name = Label(tab2, text="Enter the Link to Download",
-        font=('Comic Sans MS', 16), bg="#075C90", fg="White")
-fb_name.place(x=60, y=60)
 
-# -----------------Radio button for video to Quality--------------------------
-fb_link = IntVar()
-format_label = Label(tab2, text="Select Video Quality:",
-                font=DisFont, bg="#075C90", fg="black")
-format_label.place(x=75, y=160)
-F1 = Radiobutton(tab2, text="High", cursor='hand2', font=SubFont,
-                variable=fb_link, value=1, bg="#075C90",
-                fg="black")
-F1.place(x=80, y=200)
-F2 = Radiobutton(tab2, text="Low", cursor='hand2', font=SubFont,
-                variable=fb_link, value=2, bg="#075C90",
-                fg="black")
-F2.place(x=200, y=200)
+
+def FacebookDownload():
+    try:
+        html = r.get(var1.get())
+        dirname = filedialog.askdirectory(parent=tab2, initialdir="/",
+                    title='Please select a directory')
+        if dirname:
+            hdvideo_url = re.search('hd_src:"(.+?)"', html.text)[1]
+        try:
+            hd_url = hdvideo_url.replace('hd_src:"', '')
+            messagebox.showinfo("FYIT","[+] Video Started Downloading")
+            progress_bar = ttk.Progressbar(tab2, orient = 'horizontal', length = 500, mode = 'determinate')
+            progress_bar.place(x=60,y=140)
+            progress_bar.start()
+            wget.download(hd_url, dirname)
+            ERASE_LINE = '\x1b[2K'
+            sys.stdout.write(ERASE_LINE)
+            messagebox.showinfo("FYIT","Video downloaded")
+            progress_bar.stop()
+        except r.ConnectionError as e:
+            messagebox.showerror("FYIT","ConnectionError")
+        except r.Timeout as e:
+            messagebox.showinfo("FYIT","TIMEOUT")
+        except r.RequestException as e:
+            messagebox.showerror("FYIT","GENRAL ERROR OR INVALID URL")
+        except(KeyboardInterrupt,SystemExit):
+            messagebox.showinfo("FYIT","SystemExit")
+            sys.exit()
+        except TypeError:
+            messagebox.showerror("FYIT","Video May Private or InvalidURL")
+    except Exception as e:
+        messagebox.showwarning("FYIT","CANCELED") 
+downbtnfb = Button(tab2, text="Download", font=DisFont,
+                 command=FacebookDownload, cursor='hand2', activebackground="lightgreen",
+                 activeforeground="blue")
+downbtnfb.place(x=500, y=405, width=200, height=30)
 top.mainloop()
 # -----------------------------Close Function--------------------------------
 def on_close():

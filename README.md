@@ -4,10 +4,10 @@
 <h1>YoutubeDownloader-FYI</h1> 
 
 [![GitHub license](https://img.shields.io/github/license/DeepakChakravarthy/YoutubeDownloader-FYI)](https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/LICENSE)
+[![Run on Repl.it](https://repl.it/badge/github/DeepakChakravarthy/YoutubeDownloader-FYI)](https://repl.it/github/DeepakChakravarthy/YoutubeDownloader-FYI)
 [![CodeFactor](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi/badge)](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI) 
 
 
 ---------------------------------------------------------
