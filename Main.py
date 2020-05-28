@@ -13,10 +13,7 @@ import tkinter as tk
 from tkinter import ttk
 import clipboard
 import webbrowser
-<<<<<<< HEAD
 
-=======
->>>>>>> 1866a36101ea8fe6b4e91e9953d4ac814c383fef
 # ============================ Window Design ================================ 
 top = tk.Tk()
 # Styles and Designs Functions for Screens
