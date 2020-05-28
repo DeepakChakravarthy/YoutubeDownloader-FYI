@@ -173,7 +173,7 @@ t_btn.place(x=571, y=118, width=45, height=29)
 
 new = 1
 url1 = "https://bit.ly/site-fyit" 
-res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/tag/V3.0"
+res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/download/V3.0/FYI.DOWNLOAD.EXE"
 
 def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
