@@ -14,9 +14,6 @@ from tkinter import ttk
 import clipboard
 import webbrowser
 import requests
-from ttkthemes import ThemedTk
-from tkinter import PhotoImage
-
 # ============================ Window Design ================================ 
 #top = tk.Tk()
 top = ThemedTk(theme="breeze")
@@ -177,7 +174,7 @@ t_btn.place(x=571, y=118, width=45, height=29)
 
 new = 1
 url1 = "https://bit.ly/site-fyit" 
-res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/tag/V2.0"
+res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/tag/V3.0"
 
 def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
