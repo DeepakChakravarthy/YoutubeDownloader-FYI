@@ -7,7 +7,7 @@
 [![Run on Repl.it](https://repl.it/badge/github/DeepakChakravarthy/YoutubeDownloader-FYI)](https://repl.it/github/DeepakChakravarthy/YoutubeDownloader-FYI)
 [![CodeFactor](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi/badge)](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master)
+[![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master) [![Join the chat at https://gitter.im/FYIT-DOWNLOADER/DEV-FYI](https://badges.gitter.im/FYIT-DOWNLOADER/DEV-FYI.svg)](https://gitter.im/FYIT-DOWNLOADER/DEV-FYI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ---------------------------------------------------------

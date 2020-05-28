@@ -13,7 +13,10 @@ import tkinter as tk
 from tkinter import ttk
 import clipboard
 import webbrowser
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1866a36101ea8fe6b4e91e9953d4ac814c383fef
 # ============================ Window Design ================================ 
 top = tk.Tk()
 # Styles and Designs Functions for Screens
@@ -173,7 +176,7 @@ t_btn.place(x=571, y=118, width=45, height=29)
 
 new = 1
 url1 = "https://bit.ly/site-fyit" 
-res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/tag/V2.0"
+res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/download/V3.0/FYI.DOWNLOAD.EXE"
 
 def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
