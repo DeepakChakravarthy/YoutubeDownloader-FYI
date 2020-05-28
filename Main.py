@@ -13,16 +13,12 @@ import tkinter as tk
 from tkinter import ttk
 import clipboard
 import webbrowser
-import requests
-from ttkthemes import ThemedTk
-from tkinter import PhotoImage
 
 # ============================ Window Design ================================ 
-#top = tk.Tk()
-top = ThemedTk(theme="breeze")
+top = tk.Tk()
 # Styles and Designs Functions for Screens
-# Color set for youtube for selectcolor, bg & activebackground #520B00
-yt_col = "#520B00"  # Youtube bg Color
+# Color set for youtube for selectcolor, bg & activebackground #0B1D6F
+yt_col = "#0B1D6F"  # Youtube bg Color
 # Color set for facebook for selectcolor, bg & activebackground #075C90
 fb_col = '#075C90' # Facebook bg Color
 col_show = 'white'  # pure white fg
@@ -305,7 +301,7 @@ downbtn.place(x=500, y=400, width=200, height=30)   # Download button Tab1
 yt_label = Label(tab1,
                  text="Enter the Link to Download",
                  font=large_font,
-                 bg="#520B00",
+                 bg="#0B1D6F",
                  fg="White")
 yt_label.place(x=65, y=65)                          # Label placed in Tab1
 
@@ -315,7 +311,7 @@ Rvideo = IntVar()       # Variable Daclaraton for Youtube Video (options)
 resolution_label = Label(tab1,
                          text="Video Resolution:",
                          font=DisFont,
-                         bg="#520B00",
+                         bg="#0B1D6F",
                          fg="white")
 resolution_label.place(x=75, y=200)
 R1 = Radiobutton(tab1,
@@ -361,7 +357,7 @@ A_Audio = IntVar()      # Variable Daclaraton for Youtube Audio (options)
 format_label = Label(tab1,
                      text="Only Audio:",
                      font=DisFont,
-                     bg="#520B00",
+                     bg="#0B1D6F",
                      fg="white")
 format_label.place(x=260, y=200)
 R4 = Radiobutton(tab1,
@@ -395,7 +391,7 @@ A_Video = IntVar()      # Variable Daclaraton for Youtube Playlist (options)
 list_label = Label(tab1,
                    text="Download Playlist:",
                    font=DisFont,
-                   bg="#520B00",
+                   bg="#0B1D6F",
                    fg="white")
 list_label.place(x=415, y=200)
 R7 = Radiobutton(tab1,
