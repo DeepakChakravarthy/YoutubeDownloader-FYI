@@ -13,7 +13,6 @@ import tkinter as tk
 from tkinter import ttk
 import clipboard
 import webbrowser
-import requests
 # ============================ Window Design ================================ 
 #top = tk.Tk()
 top = ThemedTk(theme="breeze")
