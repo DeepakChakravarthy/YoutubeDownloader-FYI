@@ -13,7 +13,7 @@ import tkinter as tk
 from tkinter import ttk
 import clipboard
 import webbrowser
-
+from tkinterhtml import HtmlFrame
 # ============================ Window Design ================================ 
 top = tk.Tk()
 # Styles and Designs Functions for Screens
@@ -179,7 +179,7 @@ def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
 
 def update_check():     # AutoCheck Software Update
-    response = requests.get(res_url)
+    response = r.get(res_url)
     response.raise_for_status()
     if messagebox.askyesno("Software Update", 
             "New Update is Availabe, Click yes to install.") is True:
@@ -192,9 +192,9 @@ def get_fetch():
     
     try:
         update_check()	    
-    except requests.exceptions.HTTPError as err:
+    except r.exceptions.HTTPError as err:
 	    messagebox.showinfo("FYIT", "Select Location to Save the File.")
-    except requests.ConnectionError as e:
+    except r.ConnectionError as e:
         messagebox.showinfo("Connection Error", "Check the Internet Connection")        
 
     try:
@@ -427,9 +427,9 @@ fb_label.place(x=65, y=65)      # Label placed in Tab2
 def FacebookDownload():         # FacebookDownloader Main Fuction 
     try:
         update_check()
-    except requests.exceptions.HTTPError as err:
+    except r.exceptions.HTTPError as err:
 	    messagebox.showinfo("FYIT", "Select Location to Download.")
-    except requests.ConnectionError as e:
+    except r.ConnectionError as e:
         messagebox.showinfo("Connection Error",
                             "Check the Internet Connection")
 
@@ -486,10 +486,10 @@ def find_update():              # Check Software Update - 2
     try:
         update_check()
         messagebox.showinfo("FYIT", "Thank You.")
-    except requests.ConnectionError as e:
+    except r.ConnectionError as e:
         messagebox.showinfo("Connection Error",
                             "Check the Internet Connection")
-    except requests.exceptions.HTTPError as err: 
+    except r.exceptions.HTTPError as err: 
         messagebox.showinfo("FYIT","No Update yet..")
 
 tab3_style = ttk.Style()
@@ -567,22 +567,10 @@ link_5 = Button(frame1,
 link_5.place(x=20, y=420)
 link_5.config(highlightthickness=0)
 
-frame2 = tk.Frame(master=tab3, width=640, bg="#C8D9EE")     # Tab3_Frame2
+frame2 = HtmlFrame(master=tab3, width=640, horizontal_scrollbar="auto")     # Tab3_Frame2
 frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
-canvas=Canvas(frame2,
-                bg='#FFFFFF', 
-                width=640, 
-                height=500, 
-                scrollregion=(0,0,640,500))
-                
-vbar=Scrollbar(frame2, orient=VERTICAL)
-vbar.pack(side=RIGHT,fill=Y)
-vbar.config(command=canvas.yview)
-
-canvas.config(width=600, height=500)
-canvas.config(yscrollcommand=vbar.set)
-canvas.pack(side=RIGHT, expand=True, fill=BOTH)
+frame2.set_content(open("Assets/help.html", "r").read())
 
 top.mainloop()
 
