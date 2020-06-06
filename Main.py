@@ -94,7 +94,7 @@ tabControl.pack(expand=1, fill="both")
 
 top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon 
 top.title("FYIT Download Manager :")  # Title Label
-top.geometry("800x500+300+100")  # Screen Size
+top.geometry("800x500+100+100")  # Screen Size
 
 photo = PhotoImage(file="Assets/youtube_bg.png")  # Tab1 Background
 w = Label(tab1, image=photo)
