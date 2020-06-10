@@ -14,7 +14,8 @@ from tkinter import ttk
 import clipboard
 import webbrowser
 from tkinterhtml import HtmlFrame
-# ============================ Window Design ================================ 
+
+# ============================ Window Design ================================
 top = tk.Tk()
 # Styles and Designs Functions for Screens
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
@@ -61,21 +62,21 @@ style.theme_use("pop")
 
 # Style for Buttons
 s_btn = ttk.Style() # Toggle Button
-s_btn.configure('my.TButton', 
-                anchor='center', 
+s_btn.configure('my.TButton',
+                anchor='center',
                 font=('Cascadia Mono', 8))
 
 m_btn = ttk.Style() # Download and Cancel Button for both Tab1 & 2
 m_btn.configure('WD.TButton', anchor='center',
-                activebackground="lightgreen",                  
+                activebackground="lightgreen",
                 activeforeground="blue",
                 font=('Cascadia Mono', 16))
 
-# Notebook Style Config 
+# Notebook Style Config
 noteStyler = ttk.Style()
-noteStyler.configure("TNotebook", 
-                    background=COLOR_1, 
-                    anchor=CENTER, 
+noteStyler.configure("TNotebook",
+                    background=COLOR_1,
+                    anchor=CENTER,
                     borderwidth=0)
 
 # ------------------------ Screen and Tab -----------------------------------
@@ -92,7 +93,7 @@ tab3 = ttk.Frame(tabControl)        # Tab3 - About
 tabControl.add(tab3, text='About')
 tabControl.pack(expand=1, fill="both")
 
-top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon 
+top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
 top.title("FYIT Download Manager :")  # Title Label
 top.geometry("800x500+100+100")  # Screen Size
 
@@ -124,7 +125,7 @@ url.place(x=70, y=117, width=500, height=30)
 # Entry Widget for Facebook Downloader Tab
 url_fb = Entry(tab2, textvariable=var1, font=large_font, fg='darkblue')
 url_fb.place(x=70, y=117, width=500, height=30)
- 
+
 # Quit_button placed in tab1
 quit_button = Button(tab1,
                          text="Quit",
@@ -132,7 +133,7 @@ quit_button = Button(tab1,
                          font=SubFont,
                          cursor='hand2',
                          command=close_btn)
-quit_button.place(x=60, y=400, width=200, height=30) 
+quit_button.place(x=60, y=400, width=200, height=30)
 
 # ----------------------- Auto URL Paste Functions --------------------------
 temp = clipboard.paste()
@@ -144,11 +145,11 @@ def paste():  # Paste text from Clipboard - Function
     variable = clipboard.paste()
     url.insert('end', variable)
     url_fb.insert('end', variable)
-    var1.set(variable)  
+    var1.set(variable)
 
 def e1_delete():  # Clear text from Entry - Function
-    url.delete(0, 'end')        
-    url_fb.delete(0, 'end')     
+    url.delete(0, 'end')
+    url_fb.delete(0, 'end')
 
 def toggle(tog=[0]):  # Toggle Button for clear and paste
     tog[0] = not tog[0]
@@ -172,30 +173,32 @@ t_btn.place(x=571, y=118, width=45, height=29)
 # ------------------ Fetching Part from Youtube ----------------------------
 
 new = 1
-url1 = "https://bit.ly/site-fyit" 
+url1 = "https://bit.ly/site-fyit"
 res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/download/V3.0/FYI.DOWNLOAD.EXE"
 
 def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
 
-def update_check():     # AutoCheck Software Update
+def update_check():     # AutoCheck Software Update and Sub Screen
+    
     response = r.get(res_url)
+    
     response.raise_for_status()
-    if messagebox.askyesno("Software Update", 
+    if messagebox.askyesno("Software Update",
             "New Update is Availabe, Click yes to install.") is True:
         openweb()
 
 def get_fetch():
-    resolution = Rvideo.get()       
+    resolution = Rvideo.get()
     Select = A_Video.get()
     Selection = A_Audio.get()
-    
+
     try:
-        update_check()	    
+        update_check()
     except r.exceptions.HTTPError as err:
 	    messagebox.showinfo("FYIT", "Select Location to Save the File.")
     except r.ConnectionError as e:
-        messagebox.showinfo("Connection Error", "Check the Internet Connection")        
+        messagebox.showinfo("Connection Error", "Check the Internet Connection")
 
     try:
         if var1 is None:
@@ -424,7 +427,7 @@ fb_label = Label(tab2,
                  fg="White")
 fb_label.place(x=65, y=65)      # Label placed in Tab2
 
-def FacebookDownload():         # FacebookDownloader Main Fuction 
+def FacebookDownload():         # FacebookDownloader Main Fuction
     try:
         update_check()
     except r.exceptions.HTTPError as err:
@@ -489,42 +492,42 @@ def find_update():              # Check Software Update - 2
     except r.ConnectionError as e:
         messagebox.showinfo("Connection Error",
                             "Check the Internet Connection")
-    except r.exceptions.HTTPError as err: 
+    except r.exceptions.HTTPError as err:
         messagebox.showinfo("FYIT","No Update yet..")
 
 tab3_style = ttk.Style()
 
-frame1 = tk.Frame(master=tab3, width=260)           # Tab3_Frame1 
+frame1 = tk.Frame(master=tab3, width=260)           # Tab3_Frame1
 frame1.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 imge = PhotoImage(file='Assets/side_bar.png')
 pht = Label(frame1, image=imge)
 pht.pack()
 
-link_1 = Label(frame1, 
-                text="How to use..?", 
+link_1 = Label(frame1,
+                text="How to use..?",
                 font=tab_font,
-                fg="blue", 
+                fg="blue",
                 bg="#90B3DD",
                 activeforeground="red",
                 activebackground="green",
                 cursor="hand2",
                 underline=0)
 link_1.place(x=20, y=260)
-link_1.bind("<Button-1>", 
+link_1.bind("<Button-1>",
             lambda e: check_it())
 
-link_2 = Label(frame1, 
-                text="Help..!", 
+link_2 = Label(frame1,
+                text="Help..!",
                 font=tab_font,
-                fg="blue", 
+                fg="blue",
                 bg="#90B3DD",
                 activeforeground="red",
                 activebackground="green",
                 cursor="hand2",
                 underline=0)
 link_2.place(x=20, y=300)
-link_2.bind("<Button-1>", 
+link_2.bind("<Button-1>",
             lambda e: check_it("http://bit.ly/site-fyit"))
 
 link_3 = Label(frame1,
@@ -540,24 +543,24 @@ link_3.place(x=20, y=340)
 link_3.bind("<Button-1>",
             lambda e: check_it("https://gitter.im/FYIT-DOWNLOADER/DEV-FYI?utm_source=share-link&utm_medium=link&utm_campaign=share-link"))
 
-link_4 = Label(frame1, 
-                text="Visit us..", 
+link_4 = Label(frame1,
+                text="Visit us..",
                 font=tab_font,
-                fg="blue", 
+                fg="blue",
                 bg="#90B3DD",
                 activeforeground="red",
                 activebackground="green",
                 cursor="hand2",
                 underline=0)
 link_4.place(x=20, y=380)
-link_4.bind("<Button-1>", 
+link_4.bind("<Button-1>",
             lambda e: check_it("http://bit.ly/site-fyit"))
 
-link_5 = Button(frame1, 
-                text="Check Update..", 
+link_5 = Button(frame1,
+                text="Check Update..",
                 font=tab_font,
                 command=find_update,
-                fg="blue", 
+                fg="blue",
                 bg="#90B3DD",
                 activeforeground="red",
                 activebackground="#90B3DD",
@@ -572,14 +575,19 @@ frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
 
+import AddOn
 top.mainloop()
+
 
 # ----------------------------- Close Function -------------------------------
 
 def on_close():
+    AddOn.window.destroy()
     top.destroy()
     sys.exit()
 
 top.protocol("WM_DELETE_WINDOW", on_close)
-
+# ----call for other Screens------
+def minimize():
+    top.withdraw()
 # ----------------------------------------------------------------------------
