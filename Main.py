@@ -14,9 +14,58 @@ from tkinter import ttk
 import clipboard
 import webbrowser
 from tkinterhtml import HtmlFrame
+from tkinter import Tk,Menu
 
 # ============================ Window Design ================================
-top = tk.Tk()
+top = Tk()
+# - Top is Main Screen  Intialization
+window = Tk()
+# - Window is Widget of MainScreen 
+window.overrideredirect(True)#Disable Title Bar
+# - Widget Screen Size--Init
+window.geometry("130x400+1000+80")
+
+title_bar = Frame(window, bg='#4682b4', relief='ridge', bd=1, highlightcolor='#4682b4',highlightthickness=0)
+
+title_name = Label(title_bar, text="FYIT ADDON", bg='#4682b4', fg="white")
+
+# - WhatsApp Call From Widget
+def WhatsApp():
+        top.destroy()
+        window.destroy()
+        import AutoWhatsApp
+        
+# - YoutubeSearch Call From Widget
+def Ysearch():
+        top.destroy()
+        window.destroy()
+        import youtubesearch
+
+# - CloseButton call from Widget 
+def closer():
+        window.destroy()
+        window.protocol("WM_DELETE_WINDOW")
+# - Calling MainScreen From Widget
+def call_main():
+        top.destroy()
+        window.destroy()
+        import Main
+        window.update()
+
+MainScreen_call = Button(window,text="Video Downloader",command=call_main)
+AppButton =Button(window,text="WhatsApp",command = WhatsApp)
+AppButton1 =Button(window,text="FastYoutubeSearch",command = Ysearch)
+closeButton = Button(window,text ="Close",command = closer)
+title_bar.pack(fill=X)
+title_name.pack(side=LEFT)
+AppButton.place(x=10,y=100)
+AppButton1.place(x=10,y=200)
+closeButton.place(x=10,y=300)
+MainScreen_call.place(x=10,y=350)
+window.config(bg="green")
+window.update()
+
+
 # Styles and Designs Functions for Screens
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
 yt_col = "#0B1D6F"  # Youtube bg Color
@@ -36,48 +85,6 @@ tab_font = font = ('Consolas', 12)  # Tab font style
 
 tab_show = "#90B3DD"
 tab_select = "#C8D9EE"
-style = ttk.Style()
-style.theme_create("pop",
-                   parent="alt",
-                   settings={
-                       "TNotebook": {
-                           "configure": {
-                               "tabmargins": [5, 5, 2, 0]
-                           }
-                       },
-                       "TNotebook.Tab": {
-                           "configure": {
-                               "padding": [100, 5],
-                               "font": tab_font,
-                               "background": tab_show
-                           },
-                           "map": {
-                               "background": [("selected", tab_select)],
-                               "expand": [("selected", [1, 2, 2, 0])]
-                           }
-                       }
-                   })
-
-style.theme_use("pop")
-
-# Style for Buttons
-s_btn = ttk.Style() # Toggle Button
-s_btn.configure('my.TButton',
-                anchor='center',
-                font=('Cascadia Mono', 8))
-
-m_btn = ttk.Style() # Download and Cancel Button for both Tab1 & 2
-m_btn.configure('WD.TButton', anchor='center',
-                activebackground="lightgreen",
-                activeforeground="blue",
-                font=('Cascadia Mono', 16))
-
-# Notebook Style Config
-noteStyler = ttk.Style()
-noteStyler.configure("TNotebook",
-                    background=COLOR_1,
-                    anchor=CENTER,
-                    borderwidth=0)
 
 # ------------------------ Screen and Tab -----------------------------------
 
@@ -187,7 +194,7 @@ def update_check():     # AutoCheck Software Update and Sub Screen
     if messagebox.askyesno("Software Update",
             "New Update is Availabe, Click yes to install.") is True:
         openweb()
-
+# -------------------Youtube Function Call-----------------------------------
 def get_fetch():
     resolution = Rvideo.get()
     Select = A_Video.get()
@@ -196,7 +203,9 @@ def get_fetch():
     try:
         update_check()
     except r.exceptions.HTTPError as err:
+        # - No Updates
 	    messagebox.showinfo("FYIT", "Select Location to Save the File.")
+    
     except r.ConnectionError as e:
         messagebox.showinfo("Connection Error", "Check the Internet Connection")
 
@@ -575,19 +584,14 @@ frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
 
-import AddOn
+window.mainloop()
 top.mainloop()
 
 
 # ----------------------------- Close Function -------------------------------
 
 def on_close():
-    AddOn.window.destroy()
     top.destroy()
     sys.exit()
 
 top.protocol("WM_DELETE_WINDOW", on_close)
-# ----call for other Screens------
-def minimize():
-    top.withdraw()
-# ----------------------------------------------------------------------------

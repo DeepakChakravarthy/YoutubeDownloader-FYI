@@ -78,7 +78,7 @@ GoCheck.place(x=160, y=345)
 label = Label(win, 
         text="Time must be in 24 hours Format & Country Code is Must.", 
         font=cust_font, bg="#1B1B19", fg="#ffffff")
-
+import AddOn
 infinity = 1
 while infinity == 1:
     for i in range(500):
@@ -89,4 +89,12 @@ while infinity == 1:
             xpos = 0
         win.update()
 
+        
+def on_close():
+    win.destroy()
+    #import AddOn
+    sys.exit()
+
+win.protocol("WM_DELETE_WINDOW", on_close)
+import AddOn
 win.mainloop()

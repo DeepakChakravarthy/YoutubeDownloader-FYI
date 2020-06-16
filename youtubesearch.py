@@ -1,4 +1,5 @@
 import tkinter
+import tkinter
 import pywhatkit
 from tkinter import Label, StringVar, Entry, Button, Tk
 from PIL import Image, ImageTk
@@ -11,6 +12,7 @@ Window.resizable(0,0)
 cust_font = font = ('Consolas', 14)
 width = 500
 height = 400
+
 img = Image.open("Assets/ytsearch_bg.png")
 img = img.resize((width, height), Image.ANTIALIAS)
 photoImg = ImageTk.PhotoImage(img)
@@ -28,7 +30,9 @@ KeyEntry.place(x=105, y=160, width=320, height=30)
 def Key():
     pywhatkit.playonyt(Search_Key.get())
 
+
 Search_Button = Button(Window, font=cust_font, text="Search", command=Key)
 Search_Button.place(x=280, y=280, width=150, height=30)
+import AddOn
 
 Window.mainloop()
