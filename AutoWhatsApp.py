@@ -4,7 +4,6 @@ from tkinter import messagebox, StringVar, IntVar, Tk, Entry, \
     Spinbox
 from tkinter import ttk
 import pywhatkit
-from pywhatkit import prnt_sleeptm, sleeptm
 import time
 import sys
 from PIL import Image, ImageTk
@@ -79,14 +78,12 @@ def shut_timer():
         except NameError:
             messagebox.showinfo("Shutdown Timer", "Shutdown timer is not fixed")
     elif sh_time <= 86400:
-        print(sh_time)
         messagebox.showinfo("Shutdown Timer", "When we sent WhatsApp message PC will shutdown after fixed timer")
-        #pywhatkit.shutdown(time=sh_time)
+        pywhatkit.shutdown(time=sh_time)
     else:
         messagebox.showinfo("Shutdown Timer", "Shutdown timer is Greater than 24hrs.")
 
 def go():
-    print(sleeptm)
     messagebox.showinfo("AutoWhatsappMessage", 
     "Will open web.whatsapp.com at before 1 minute of Scheduled time and message \
     will be send Automatically at Scheduled time exactly Given")
