@@ -23,7 +23,7 @@ window = Tk()
 # - Window is Widget of MainScreen 
 window.overrideredirect(True)#Disable Title Bar
 # - Widget Screen Size--Init
-window.geometry("130x400+1000+80")
+window.geometry("130x400+908+100")
 
 title_bar = Frame(window, bg='#4682b4', relief='ridge', bd=1, highlightcolor='#4682b4',highlightthickness=0)
 
