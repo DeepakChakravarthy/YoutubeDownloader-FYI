@@ -1,7 +1,7 @@
-from tkinter import *
-from tkinter import scrolledtext
+import tkinter as tk
+from tkinter import Label
 
-root = Tk()
+root = tk.Tk()
 root.geometry("200x400+1040+100")
 root.resizable(0,0)
 
