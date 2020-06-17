@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import Label
 
 root = tk.Tk()
+root.title("WhatsApp History")
+root.iconbitmap("Assest/YoutubeDownloader.ico")
 root.geometry("200x400+1040+100")
 root.resizable(0,0)
 

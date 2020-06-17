@@ -43,7 +43,7 @@ def cancel_shutdown():
 		pywhatkit.cancelShutdown()
 		messagebox.showinfo("Shutdown Cancelled.", "Shutdown Scheduled time cancelled Successfully.")
 	except NameError:
-		messagebox.showerror("No Schedule.", "Shutdown time is not defined.")
+		messagebox.showwarning("No Schedule.", "Shutdown is not been Scheduled.")
 
 def show_hist():
 	import WA_history
