@@ -19,52 +19,6 @@ from tkinter import Tk,Menu
 # ============================ Window Design ================================
 top = Tk()
 # - Top is Main Screen  Intialization
-window = Tk()
-# - Window is Widget of MainScreen 
-window.overrideredirect(True)#Disable Title Bar
-# - Widget Screen Size--Init
-window.geometry("130x400+908+100")
-
-title_bar = Frame(window, bg='#4682b4', relief='ridge', bd=1, highlightcolor='#4682b4',highlightthickness=0)
-
-title_name = Label(title_bar, text="FYIT ADDON", bg='#4682b4', fg="white")
-
-# - WhatsApp Call From Widget
-def WhatsApp():
-        top.destroy()
-        window.destroy()
-        import AutoWhatsApp
-        
-# - YoutubeSearch Call From Widget
-def Ysearch():
-        top.destroy()
-        window.destroy()
-        import youtubesearch
-
-# - CloseButton call from Widget 
-def closer():
-        window.destroy()
-        window.protocol("WM_DELETE_WINDOW")
-# - Calling MainScreen From Widget
-def call_main():
-        top.destroy()
-        window.destroy()
-        import Main
-        window.update()
-
-MainScreen_call = Button(window,text="Video Downloader",command=call_main)
-AppButton =Button(window,text="WhatsApp",command = WhatsApp)
-AppButton1 =Button(window,text="FastYoutubeSearch",command = Ysearch)
-closeButton = Button(window,text ="Close",command = closer)
-title_bar.pack(fill=X)
-title_name.pack(side=LEFT)
-AppButton.place(x=10,y=100)
-AppButton1.place(x=10,y=200)
-closeButton.place(x=10,y=300)
-MainScreen_call.place(x=10,y=350)
-window.config(bg="green")
-window.update()
-
 
 # Styles and Designs Functions for Screens
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
@@ -187,9 +141,9 @@ def openweb():      # Software Update response
 	webbrowser.open(url1, new=new)
 
 def update_check():     # AutoCheck Software Update and Sub Screen
-    
+
     response = r.get(res_url)
-    
+
     response.raise_for_status()
     if messagebox.askyesno("Software Update",
             "New Update is Availabe, Click yes to install.") is True:
@@ -199,13 +153,12 @@ def get_fetch():
     resolution = Rvideo.get()
     Select = A_Video.get()
     Selection = A_Audio.get()
-
     try:
         update_check()
     except r.exceptions.HTTPError as err:
         # - No Updates
 	    messagebox.showinfo("FYIT", "Select Location to Save the File.")
-    
+
     except r.ConnectionError as e:
         messagebox.showinfo("Connection Error", "Check the Internet Connection")
 
@@ -584,7 +537,8 @@ frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
 
-window.mainloop()
+while True:
+    import AddOn
 top.mainloop()
 
 

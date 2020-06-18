@@ -31,7 +31,7 @@ Number = Label(win, text="Enter the Mobile No",
                     font=cust_font, bg="#1B1B19", fg="#ffffff")
 Number.place(x=55, y=70)
 
-Message = Label(win, text="Enter the Message", 
+Message = Label(win, text="Enter the Message",
                     font=cust_font, bg="#1B1B19", fg="#ffffff")
 Message.place(x=55, y=120)
 
@@ -43,7 +43,7 @@ Shutdown_label = Label(win, text="Enter Shutdown Timer",
                     font=cust_font, bg="#1B1B19", fg="#ffffff")
 Shutdown_label.place(x=55, y=270)
 
-hrs_label = Label(win, text="hrs", 
+hrs_label = Label(win, text="hrs",
                     font=cust_font, bg="#1B1B19", fg="#ffffff")
 hrs_label.place(x=300, y=220)
 
@@ -84,7 +84,7 @@ def shut_timer():
         messagebox.showinfo("Shutdown Timer", "Shutdown timer is Greater than 24hrs.")
 
 def go():
-    messagebox.showinfo("AutoWhatsappMessage", 
+    messagebox.showinfo("AutoWhatsappMessage",
     "Will open web.whatsapp.com at before 1 minute of Scheduled time and message \
     will be send Automatically at Scheduled time exactly Given")
     try:
@@ -92,7 +92,7 @@ def go():
         msg = Entrymsg.get("1.0", "end-1c")
         hr = hour.get()
         mini = minutes.get()
-        shut_timer() 
+        shut_timer()
         pywhatkit.sendwhatmsg(num, msg, hr, mini)
     except pywhatkit.CallTimeException:
         messagebox.showerror("AutoWhatsAppMessage",
@@ -107,11 +107,11 @@ sleep_time.place(x=250, y=270, width=80)
 GoCheck = Button(win, text="Start Schedule", command=go, font=cust_font)
 GoCheck.place(x=160, y=345)
 
-label = Label(win, 
-        text="Time must be in 24 hours Format & Country Code is Must.", 
+label = Label(win,
+        text="Time must be in 24 hours Format & Country Code is Must.",
         font=cust_font, bg="#1B1B19", fg="#ffffff")
 
-import AddOn
+
 infinity = 1
 while infinity == 1:
     for i in range(500):
@@ -122,11 +122,12 @@ while infinity == 1:
             xpos = 0
         win.update()
 
+
 def on_close():
     win.destroy()
     #import AddOn
     sys.exit()
 
 win.protocol("WM_DELETE_WINDOW", on_close)
-import AddOn
+
 win.mainloop()
