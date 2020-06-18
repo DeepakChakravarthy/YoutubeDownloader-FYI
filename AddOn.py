@@ -3,7 +3,8 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import pywhatkit
-
+import Main
+#Main.top.withdraw()
 window = Tk()
 window.overrideredirect(True)
 window.geometry("150x400+908+130")
@@ -14,31 +15,33 @@ title_name = Label(title_bar, text="FYIT ADDON", bg='#4682b4', fg="white")
 
 def WhatsApp():
 	try:
-		window.destroy()
+		Main.top.destroy()
+
 		import AutoWhatsApp
+
 	except pywhatkit.InternetException:
 		messagebox.showerror("No Internet", "Please Check the Internet Connection.")
 
 def YSearchcall():
 	try:
-		window.destroy()
+		Main.top.destroy()
+		AutoWhatsApp.win.destroy()
 		import youtubesearch
 	except pywhatkit.InternetException:
 		messagebox.showerror("No Internet","Please Check the Internet Connection.")
 
-def Ysearch():
-	window.destroy()
-	import youtubesearch
-		
 def closer():
+
 	window.destroy()
 	window.protocol("WM_DELETE_WINDOW")
 
 def call_main():
+
 	import Main
 	window.update()
-	
+
 def cancel_shutdown():
+
 	try:
 		pywhatkit.cancelShutdown()
 		messagebox.showinfo("Shutdown Cancelled.", "Shutdown Scheduled time cancelled Successfully.")
@@ -46,6 +49,7 @@ def cancel_shutdown():
 		messagebox.showwarning("No Schedule.", "Shutdown is not been Scheduled.")
 
 def show_hist():
+
 	import WA_history
 
 MainScreen_call = Button(window, text="Video Downloader",
