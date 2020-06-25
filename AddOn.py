@@ -3,6 +3,7 @@ from tkinter import Frame, Label, Button, X, LEFT
 from tkinter import messagebox
 import os
 import pywhatkit
+from PIL import Image, ImageTk
 import Main
 
 #Main.top.withdraw()
@@ -12,7 +13,14 @@ window.geometry("150x400+908+130")
 
 title_bar = Frame(window, bg='#4682b4', relief='ridge', bd=1, highlightcolor='#4682b4',highlightthickness=0)
 title_name = Label(title_bar, text="FYIT ADDON", bg='#4682b4', fg="white")
-#window.iconbitmap('Assets/YoutubeDownloader.ico')
+
+width = 150
+height = 400
+imgs = Image.open("Assets/addon_bg.png")
+imgs = imgs.resize((width, height), Image.ANTIALIAS)
+photoImg = ImageTk.PhotoImage(imgs)
+ws = Label(window, image=photoImg)
+ws.pack()
 
 def WhatsApp():
 	try:
