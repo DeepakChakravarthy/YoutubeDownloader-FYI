@@ -36,4 +36,4 @@ To Run Local place the Required Folder Files and Main Python Files in the Same L
 	2.Tiktok Video Downloader
 	3.Twitter Resourse Downloader
 ----------------------------------------------------------
-<h3><a href="https://bit.ly/site-fyit">Click here to Visit Us..</a></h3>
+<h3><a href="https://edoc-bot.github.io/fyi/">Click here to Visit Us..</a></h3>

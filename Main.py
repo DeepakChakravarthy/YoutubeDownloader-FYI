@@ -18,6 +18,7 @@ from tkinter import Tk,Menu,Toplevel,Text,Spinbox
 import pywhatkit
 import time
 import sys
+import os
 from PIL import Image, ImageTk
 
 # ============================ Window Design ================================
@@ -25,83 +26,117 @@ from PIL import Image, ImageTk
 top = Tk()
 
 
+
 # - Top is Main Screen  Intialization
 # - Menu bar Intialization
-def donothing():
-        #filewin = Toplevel(top)
+def Whatsapp_History():
+        import WA_history
+def openweb():      # Software Update response
+    webbrowser.open(url1, new=new)
+
+def update_check():     # AutoCheck Software Update and Sub Screen
+
+    response = r.get(res_url)
+
+    response.raise_for_status()
+    if messagebox.askyesno("Software Update",
+            "New Update is Availabe, Click yes to install.") is True:
+        openweb()
+def find_update():              # Check Software Update - 2
+    try:
+        update_check()
+        messagebox.showinfo("FYIT", "Thank You.")
+    except r.ConnectionError as e:
+        messagebox.showinfo("Connection Error",
+                            "Check the Internet Connection")
+    except r.exceptions.HTTPError as err:
+        messagebox.showinfo("FYIT","No Update yet..")
+def Cancel_Shutdown():
+    try:
+        pywhatkit.cancelShutdown()
+        messagebox.showinfo("Shutdown Cancelled.", "Shutdown Scheduled time cancelled Successfully.")
+    except NameError:
+        messagebox.showwarning("No Schedule.", "Shutdown is not been Scheduled.")
+# -----------Close Function--------------------------------------------------
+def close_btn():
+    if messagebox.askyesno("FYIT..", "Are you Sure you want to exit") is True:
+        top.withdraw()
         top.destroy()
-        import Addon
-        
-        #button = Button(filewin, text="Do nothing button")
-        #button.pack()
-   
+        top.exit()
+# ---------------------------------------------------------------------------
+
+
 menubar = Menu(top)
-filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="New", command=donothing)
-filemenu.add_separator()
-filemenu.add_command(label="Exit", command=top.quit)
 
-menubar.add_cascade(label="WhatsApp", menu=filemenu)
-# Edit Menu
 
-editmenu = Menu(menubar, tearoff=0)
-editmenu.add_separator()
-editmenu.add_command(label="Cut", command=donothing)
-editmenu.add_command(label="Copy", command=donothing)
+menubar.add_cascade(label="Whatsapp History",command=Whatsapp_History)
 
-menubar.add_cascade(label="Edit", menu=editmenu)
+menubar.add_cascade(label="Cancel Shutdown", command=Cancel_Shutdown)
 
-#Help Menu
+menubar.add_cascade(label="Check Update",command=find_update)
 
-helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Help Index", command=donothing)
-helpmenu.add_command(label="About...", command=donothing)
-menubar.add_cascade(label="Help", menu=helpmenu)
 
 top.config(menu=menubar)
+
 # Styles and Designs Functions for Screens
+
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
+
 yt_col = "#0B1D6F"  # Youtube bg Color
+
 # Color set for facebook for selectcolor, bg & activebackground #075C90
+
 fb_col = '#075C90' # Facebook bg Color
+
 col_show = 'white'  # pure white fg
+
 col_select = 'gray'  # gray for activeforeground
+
 COLOR_1 = "#90B3DD" # TabControl Config Color
 
+
 # Font Style and Size
+
 large_font = font = ('Cascadia Mono', 16)  # style='my.head'
+
 DisFont = font = ('', 14)  # style='my.default'
+
 SubFont = font = ('Consolas', 12)  # style='my.sub'
+
 tab_font = font = ('Consolas', 12)  # Tab font style
 
 # ------------------------- Tab Control Style Config ----------------------
 
 tab_show = "#90B3DD"
+
 tab_select = "#C8D9EE"
 
-
-
 # ------------------------ Screen and Tab -----------------------------------
+style = ttk.Style(top)
+style.configure('lefttab.TNotebook', tabposition='wn')
 
-tabControl = ttk.Notebook(top)
+tabControl = ttk.Notebook(top, style='lefttab.TNotebook')
 
 tab4 = ttk.Frame(tabControl)
-tabControl.add(tab4, text='WhatsApp')
+tabControl.add(tab4, text='WhatsApp-MessageSender')
+
+tab5 = ttk.Frame(tabControl)
+tabControl.add(tab5,text='Fast-YoutubeSearch')
 
 tab1 = ttk.Frame(tabControl)        # Tab1 - Youtube
-tabControl.add(tab1, text='Youtube')
+tabControl.add(tab1, text='Youtube-Downloader')
 
 tab2 = ttk.Frame(tabControl)        # Tab2 - Facebook
-tabControl.add(tab2, text='Facebook')
+tabControl.add(tab2, text='Facebook-Downloader')
 
 tab3 = ttk.Frame(tabControl)        # Tab3 - About
 tabControl.add(tab3, text='About')
 
-tabControl.pack(expand=1, fill="both")
+tabControl.pack()
 
 top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
 top.title("FYIT Download Manager :")  # Title Label
-top.geometry("800x500+100+100")  # Screen Size
+top.geometry("965x500+100+100")  # Screen Size
 
 photo = PhotoImage(file="Assets/youtube_bg.png")  # Tab1 Background
 w = Label(tab1, image=photo)
@@ -113,15 +148,6 @@ w2.pack()
 
 top.resizable(0, 0)     # Disable the Maximize & Minimize option
 
-# -----------Close Function--------------------------------------------------
-
-def close_btn():
-    if messagebox.askyesno("FYIT..", "Are you Sure you want to exit") is True:
-        top.withdraw()
-        top.destroy()
-        top.exit()
-
-# ---------------------------------------------------------------------------
 
 var1 = StringVar()
 # Entry Widget for Youtube Downloader Tab
@@ -182,17 +208,7 @@ new = 1
 url1 = "https://bit.ly/site-fyit"
 res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/download/V3.0/FYI.DOWNLOAD.EXE"
 
-def openweb():      # Software Update response
-	webbrowser.open(url1, new=new)
 
-def update_check():     # AutoCheck Software Update and Sub Screen
-
-    response = r.get(res_url)
-
-    response.raise_for_status()
-    if messagebox.askyesno("Software Update",
-            "New Update is Availabe, Click yes to install.") is True:
-        openweb()
 # -------------------Youtube Function Call-----------------------------------
 def get_fetch():
     resolution = Rvideo.get()
@@ -488,19 +504,9 @@ downbtnfb.place(x=500, y=400, width=200, height=30)    # Download placed in Tab2
 
 # ======================= About Tab Control ===================================
 
-def check_it(hyper_link):       # About tab Redirect Link (Frame1)
+def check_it(hyper_link):  
+    # About tab Redirect Link (Frame1)
     webbrowser.open_new(hyper_link)
-
-
-def find_update():              # Check Software Update - 2
-    try:
-        update_check()
-        messagebox.showinfo("FYIT", "Thank You.")
-    except r.ConnectionError as e:
-        messagebox.showinfo("Connection Error",
-                            "Check the Internet Connection")
-    except r.exceptions.HTTPError as err:
-        messagebox.showinfo("FYIT","No Update yet..")
 
 tab3_style = ttk.Style()
 
@@ -581,6 +587,33 @@ frame2 = HtmlFrame(master=tab3, width=640, horizontal_scrollbar="auto")     # Ta
 frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
+# ----------------------------Fast Youtube Search ----------------
+cust_font = font = ('Consolas', 14)
+width = 500
+height = 400
+
+img1 = Image.open("Assets/ytsearch_bg.png")
+img1 = img1.resize((width, height), Image.ANTIALIAS)
+photoImg1 = ImageTk.PhotoImage(img1)
+wb1 = Label(tab5, image=photoImg1)
+wb1.pack()
+
+Name_Label = Label(tab5, font=cust_font,
+                   text="Fast Search in Youtube", bg='#232621', fg='#ffffff')  
+Name_Label.place(x=105, y=100,  width=300, height=30)
+
+Search_Key = StringVar()
+KeyEntry = Entry(tab5, font=cust_font, textvariable=Search_Key)
+KeyEntry.place(x=105, y=160, width=320, height=30)
+
+def Key():
+    pywhatkit.playonyt(Search_Key.get())
+
+
+Search_Button = Button(tab5, font=cust_font, text="Search", command=Key)
+Search_Button.place(x=280, y=280, width=150, height=30)
+tab5.update()
+
 
 # ----------------------- Whatsapp Screen-----------------------------------
 cust_font = font = ('Consolas', 12)
@@ -692,7 +725,11 @@ while infinity == 1:
             xpos = 0
         tab4.update()
 # ----------------------------- Close Function -------------------------------
+
+top.config(bg='black')
 top.mainloop()
+
+
 def on_close():
     top.destroy()
     sys.exit()
