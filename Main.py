@@ -14,12 +14,51 @@ from tkinter import ttk
 import clipboard
 import webbrowser
 from tkinterhtml import HtmlFrame
-from tkinter import Tk,Menu
+from tkinter import Tk,Menu,Toplevel,Text,Spinbox
+import pywhatkit
+import time
+import sys
+from PIL import Image, ImageTk
 
 # ============================ Window Design ================================
-top = Tk()
-# - Top is Main Screen  Intialization
 
+top = Tk()
+
+
+# - Top is Main Screen  Intialization
+# - Menu bar Intialization
+def donothing():
+        #filewin = Toplevel(top)
+        top.destroy()
+        import Addon
+        
+        #button = Button(filewin, text="Do nothing button")
+        #button.pack()
+   
+menubar = Menu(top)
+filemenu = Menu(menubar, tearoff=0)
+filemenu.add_command(label="New", command=donothing)
+filemenu.add_separator()
+filemenu.add_command(label="Exit", command=top.quit)
+
+menubar.add_cascade(label="WhatsApp", menu=filemenu)
+# Edit Menu
+
+editmenu = Menu(menubar, tearoff=0)
+editmenu.add_separator()
+editmenu.add_command(label="Cut", command=donothing)
+editmenu.add_command(label="Copy", command=donothing)
+
+menubar.add_cascade(label="Edit", menu=editmenu)
+
+#Help Menu
+
+helpmenu = Menu(menubar, tearoff=0)
+helpmenu.add_command(label="Help Index", command=donothing)
+helpmenu.add_command(label="About...", command=donothing)
+menubar.add_cascade(label="Help", menu=helpmenu)
+
+top.config(menu=menubar)
 # Styles and Designs Functions for Screens
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
 yt_col = "#0B1D6F"  # Youtube bg Color
@@ -40,9 +79,14 @@ tab_font = font = ('Consolas', 12)  # Tab font style
 tab_show = "#90B3DD"
 tab_select = "#C8D9EE"
 
+
+
 # ------------------------ Screen and Tab -----------------------------------
 
 tabControl = ttk.Notebook(top)
+
+tab4 = ttk.Frame(tabControl)
+tabControl.add(tab4, text='WhatsApp')
 
 tab1 = ttk.Frame(tabControl)        # Tab1 - Youtube
 tabControl.add(tab1, text='Youtube')
@@ -52,6 +96,7 @@ tabControl.add(tab2, text='Facebook')
 
 tab3 = ttk.Frame(tabControl)        # Tab3 - About
 tabControl.add(tab3, text='About')
+
 tabControl.pack(expand=1, fill="both")
 
 top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
@@ -537,13 +582,117 @@ frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
 
-while True:
-    import AddOn
-top.mainloop()
+# ----------------------- Whatsapp Screen-----------------------------------
+cust_font = font = ('Consolas', 12)
+width = 500
+height = 400
+img = Image.open("Assets/whatsapp_bg.png")
+img = img.resize((width, height), Image.ANTIALIAS)
+photoImg = ImageTk.PhotoImage(img)
+wb = Label(tab4, image=photoImg)
+wb.pack()
+
+MobNum = StringVar()
+Mob2msg = StringVar()
+hour = IntVar()
+minutes = IntVar()
+
+Number = Label(tab4, text="Enter the Mobile No",
+                    font=cust_font, bg="#1B1B19", fg="#ffffff")
+Number.place(x=55, y=70)
+
+Message = Label(tab4, text="Enter the Message",
+                    font=cust_font, bg="#1B1B19", fg="#ffffff")
+Message.place(x=55, y=120)
+
+hourlabel = Label(tab4, text="Enter Schedule Time",
+                    font=cust_font, bg="#1B1B19", fg="#ffffff")
+hourlabel.place(x=55, y=220)
+
+Shutdown_label = Label(tab4, text="Enter Shutdown Timer",
+                    font=cust_font, bg="#1B1B19", fg="#ffffff")
+Shutdown_label.place(x=55, y=270)
+
+hrs_label = Label(tab4, text="hrs",
+                    font=cust_font, bg="#1B1B19", fg="#ffffff")
+hrs_label.place(x=300, y=220)
+
+mins_label = Label(tab4, text="mins.",
+                     font=cust_font, bg="#1B1B19", fg="#ffffff")
+mins_label.place(x=390, y=220)
+
+shut_label = Label(tab4, text="seconds.",
+                   font=cust_font, bg="#1B1B19", fg="#ffffff")
+shut_label.place(x=340, y=270)
+
+Entrynum = Entry(tab4, textvariable=MobNum, font=cust_font)
+Entrynum.insert(0,"+91")
+Entrynum.place(x=250, y=70)
+
+Entrymsg = Text(tab4, font=cust_font)
+Entrymsg.place(x=250, y=120, width=185, height=70)
+
+hours = Spinbox(tab4, textvariable=hour, font=cust_font, from_=0, to=23)
+hours.place(x=250, y=220, width=50)
+
+mins = Spinbox(tab4, textvariable=minutes, font=cust_font, from_=0, to=59)
+mins.place(x=340, y=220, width=50)
+
+sleep = IntVar()
+def shut_timer():
+    sh_time = sleep.get()
+    if sh_time == 0:
+        try:
+            pywhatkit.cancelShutdown()
+            messagebox.showinfo("Shutdown Timer", "Shutdown timer is not fixed")
+        except NameError:
+            messagebox.showinfo("Shutdown Timer", "Shutdown timer is not fixed")
+    elif sh_time <= 86400:
+        messagebox.showinfo("Shutdown Timer", "When we sent WhatsApp message PC will shutdown after fixed timer")
+        pywhatkit.shutdown(time=sh_time)
+    else:
+        messagebox.showinfo("Shutdown Timer", "Shutdown timer is Greater than 24hrs.")
+
+def go():
+    messagebox.showinfo("AutoWhatsappMessage",
+    "Will open web.whatsapp.com at before 1 minute of Scheduled time and message \
+    will be send Automatically at Scheduled time exactly Given")
+    try:
+        num = MobNum.get()
+        msg = Entrymsg.get("1.0", "end-1c")
+        hr = hour.get()
+        mini = minutes.get()
+        shut_timer()
+        pywhatkit.sendwhatmsg(num, msg, hr, mini)
+    except pywhatkit.CallTimeException:
+        messagebox.showerror("AutoWhatsAppMessage",
+                             "Set Schedule time More than 1 minute from Current Time")
+    except pywhatkit.CountryCodeException:
+        messagebox.showerror("AutoWhatsAppMessage",
+                             "Please Ensure the mobile number & Coutry code.")
+
+sleep_time = Spinbox(tab4, textvariable=sleep, font=cust_font, from_=0, to=86399)
+sleep_time.place(x=250, y=270, width=80)
+
+GoCheck = Button(tab4, text="Start Schedule", command=go, font=cust_font)
+GoCheck.place(x=160, y=345)
+
+label = Label(tab4,
+        text="Time must be in 24 hours Format & Country Code is Must.",
+        font=cust_font, bg="#1B1B19", fg="#ffffff")
 
 
+infinity = 1
+while infinity == 1:
+    for i in range(500):
+        xpos = i
+        label.place(x=xpos, y=20)
+        time.sleep(0.01)
+        if xpos == 500:
+            xpos = 0
+        tab4.update()
 # ----------------------------- Close Function -------------------------------
-
+top.mainloop()
 def on_close():
     top.destroy()
     sys.exit()
