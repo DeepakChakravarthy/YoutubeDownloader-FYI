@@ -15,20 +15,18 @@ import clipboard
 import webbrowser
 from tkinterhtml import HtmlFrame
 from tkinter import Tk,Menu,Toplevel,Text,Spinbox
-import pywhatkit
 import time
 import sys
 import os
 from PIL import Image, ImageTk
-
 # ============================ Window Design ================================
 
 top = Tk()
 
 
-
 # - Top is Main Screen  Intialization
 # - Menu bar Intialization
+
 def Whatsapp_History():
         import WA_history
 def openweb():      # Software Update response
@@ -65,11 +63,18 @@ def close_btn():
         top.exit()
 # ---------------------------------------------------------------------------
 
-
+if (1 ==1):
+   try:
+    import pywhatkit
+   except Exception as e:
+    messagebox.showwarning("FYIT","No Internet.. Connect to Internet")
+else:
+    messagebox.showwarning("FYIT","No Internet")
+    
 menubar = Menu(top)
 
 
-menubar.add_cascade(label="Whatsapp History",command=Whatsapp_History)
+menubar.add_command(label="Whatsapp History",command=Whatsapp_History, font=("Verdana", 14))
 
 menubar.add_cascade(label="Cancel Shutdown", command=Cancel_Shutdown)
 
@@ -137,6 +142,8 @@ tabControl.pack()
 top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
 top.title("FYIT Download Manager :")  # Title Label
 top.geometry("965x500+100+100")  # Screen Size
+
+
 
 photo = PhotoImage(file="Assets/youtube_bg.png")  # Tab1 Background
 w = Label(tab1, image=photo)
@@ -690,11 +697,19 @@ def go():
     messagebox.showinfo("AutoWhatsappMessage",
     "Will open web.whatsapp.com at before 1 minute of Scheduled time and message \
     will be send Automatically at Scheduled time exactly Given")
+    
     try:
         num = MobNum.get()
         msg = Entrymsg.get("1.0", "end-1c")
         hr = hour.get()
         mini = minutes.get()
+        if (1 ==1):
+            try:
+                import pywhatkit
+            except Exception as e:
+                messagebox.showwarning("FYIT","No Internet.. Connect to Internet")
+        else:
+            messagebox.showwarning("FYIT","No Internet")
         shut_timer()
         pywhatkit.sendwhatmsg(num, msg, hr, mini)
     except pywhatkit.CallTimeException:
