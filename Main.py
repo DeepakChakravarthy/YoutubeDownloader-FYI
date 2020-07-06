@@ -19,6 +19,7 @@ import pywhatkit
 import time
 import sys
 import os
+from youtubepy import Video
 from PIL import Image, ImageTk
 
 # ============================ Window Design ================================
@@ -70,9 +71,9 @@ if (1 ==1):
    try:
     import pywhatkit
    except Exception as e:
-    messagebox.showwarning("Internet is Slow", "Check Internet Connection")
+    messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
 else:
-    messagebox.showwarning("Internet is Slow", "Check Internet Connection")
+    messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
     
 menubar = Menu(top)
 menubar.add_cascade(label="Whatsapp History", command=Whatsapp_History)
@@ -195,6 +196,7 @@ temp = clipboard.paste()
 url.insert('end', temp)
 url_fb.insert('end', temp)
 var1.set(temp)
+
 
 def paste():  # Paste text from Clipboard - Function
     variable = clipboard.paste()
@@ -634,11 +636,18 @@ Name_Label = Label(tab5, font=cust_font,
 Name_Label.place(x=130, y=140,  width=280, height=30)
 
 Search_Key = StringVar()
+
 KeyEntry = Entry(tab5, font=cust_font, textvariable=Search_Key)
 KeyEntry.place(x=130, y=200, width=550, height=30)
 
 def Key():
-    pywhatkit.playonyt(Search_Key.get())
+    #pywhatkit.playonyt(Search_Key.get())
+    #Search_Key Variable to check the Keyword
+
+    Fs_Search = Video(Search_Key.get())
+    Out = Fs_Search.search()
+    webbrowser.open_new(Out)
+    
 
 Search_Button = Button(tab5, font=cust_font, text="Search", command=Key)
 Search_Button.place(x=530, y=320, width=150, height=30)
@@ -734,9 +743,9 @@ def go():
             try:
                 import pywhatkit
             except Exception as e:
-                messagebox.showwarning("Internet is Slow", "Check Internet Connection")
+                messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
         else:
-            messagebox.showwarning("Internet is Slow", "Check Internet Connection")
+            messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
         shut_timer()
         pywhatkit.sendwhatmsg(num, msg, hr, mini)
     except pywhatkit.CallTimeException:
@@ -752,6 +761,9 @@ sleep_time.place(x=350, y=310, height=30, width=80)
 GoCheck = Button(tab4, text="Start Schedule", command=go, font=cust_font)
 GoCheck.place(x=300, y=405)
 
+
+
+
 label = Label(tab4,
         text="Time must be in 24 hours Format & Country Code is Must.",
         font=cust_font1, bg="#1B1B19", fg="#ffffff")
@@ -766,9 +778,14 @@ while infinity == 1:
             xpos = 0
         tab4.update()
 
+
+
+
+
 # ----------------------------- Close Function -------------------------------
 
 top.config(bg='black')
+
 top.mainloop()
 
 def on_close():
