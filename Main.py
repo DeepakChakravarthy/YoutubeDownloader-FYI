@@ -1,4 +1,4 @@
-# ------------------Import Files---------------------------------------------
+# ------------------ Packages imported ---------------------------------------------
 import pytube
 from pytube import YouTube
 from pytube import Playlist
@@ -15,31 +15,30 @@ import clipboard
 import webbrowser
 from tkinterhtml import HtmlFrame
 from tkinter import Tk,Menu,Toplevel,Text,Spinbox
+import pywhatkit
 import time
 import sys
 import os
 from PIL import Image, ImageTk
+
 # ============================ Window Design ================================
 
 top = Tk()
-
-
 # - Top is Main Screen  Intialization
 # - Menu bar Intialization
-
 def Whatsapp_History():
         import WA_history
+
 def openweb():      # Software Update response
     webbrowser.open(url1, new=new)
 
 def update_check():     # AutoCheck Software Update and Sub Screen
-
     response = r.get(res_url)
-
     response.raise_for_status()
     if messagebox.askyesno("Software Update",
             "New Update is Availabe, Click yes to install.") is True:
         openweb()
+
 def find_update():              # Check Software Update - 2
     try:
         update_check()
@@ -49,101 +48,118 @@ def find_update():              # Check Software Update - 2
                             "Check the Internet Connection")
     except r.exceptions.HTTPError as err:
         messagebox.showinfo("FYIT","No Update yet..")
+
 def Cancel_Shutdown():
     try:
         pywhatkit.cancelShutdown()
         messagebox.showinfo("Shutdown Cancelled.", "Shutdown Scheduled time cancelled Successfully.")
     except NameError:
         messagebox.showwarning("No Schedule.", "Shutdown is not been Scheduled.")
+
 # -----------Close Function--------------------------------------------------
+
 def close_btn():
     if messagebox.askyesno("FYIT..", "Are you Sure you want to exit") is True:
         top.withdraw()
         top.destroy()
         top.exit()
+
 # ---------------------------------------------------------------------------
 
 if (1 ==1):
    try:
     import pywhatkit
    except Exception as e:
-    messagebox.showwarning("FYIT","No Internet.. Connect to Internet")
+    messagebox.showwarning("Internet is Slow", "Check Internet Connection")
 else:
-    messagebox.showwarning("FYIT","No Internet")
+    messagebox.showwarning("Internet is Slow", "Check Internet Connection")
     
 menubar = Menu(top)
-
-
-menubar.add_command(label="Whatsapp History",command=Whatsapp_History, font=("Verdana", 14))
-
+menubar.add_cascade(label="Whatsapp History", command=Whatsapp_History)
 menubar.add_cascade(label="Cancel Shutdown", command=Cancel_Shutdown)
-
 menubar.add_cascade(label="Check Update",command=find_update)
-
-
-top.config(menu=menubar)
+top.config(bg='black', menu=menubar)
 
 # Styles and Designs Functions for Screens
-
 # Color set for youtube for selectcolor, bg & activebackground #0B1D6F
-
 yt_col = "#0B1D6F"  # Youtube bg Color
-
 # Color set for facebook for selectcolor, bg & activebackground #075C90
-
 fb_col = '#075C90' # Facebook bg Color
-
 col_show = 'white'  # pure white fg
-
 col_select = 'gray'  # gray for activeforeground
-
 COLOR_1 = "#90B3DD" # TabControl Config Color
-
-
 # Font Style and Size
-
 large_font = font = ('Cascadia Mono', 16)  # style='my.head'
-
 DisFont = font = ('', 14)  # style='my.default'
-
 SubFont = font = ('Consolas', 12)  # style='my.sub'
-
 tab_font = font = ('Consolas', 12)  # Tab font style
 
-# ------------------------- Tab Control Style Config ----------------------
-
+# Tab Control Style Config 
 tab_show = "#90B3DD"
-
 tab_select = "#C8D9EE"
 
-# ------------------------ Screen and Tab -----------------------------------
-style = ttk.Style(top)
-style.configure('lefttab.TNotebook', tabposition='wn')
+g_black = "#262626"
+black = "#000000"
 
+style = ttk.Style()
+style.theme_create( "yummy", parent="alt", settings={
+        "TNotebook": {"configure": { "tabmargins": [2, 5, 2, 0] } },
+        "TNotebook.Tab": {
+            "configure": {"padding": [15, 5], "foreground": 'gray', "background": black },
+            "map":       {"background": [("selected", g_black)],
+                          "foreground": [("selected", 'white')],
+                          "expand": [("selected", [2, 3, 2, 0])] } } } )
+style.theme_use("yummy")
+
+# ------------------------ Screen and Tab -----------------------------------
+
+style = ttk.Style(top)
+style.configure('lefttab.TNotebook', tabposition='sw')
 tabControl = ttk.Notebook(top, style='lefttab.TNotebook')
 
+lb = 20
+bd = 20
+
+tabimg1 = Image.open("Assets/WA.png")
+tabimg1 = tabimg1.resize((lb,bd), Image.ANTIALIAS)
+timg1 = ImageTk.PhotoImage(tabimg1)
+
+tabimg2 = Image.open("Assets/fs.png")
+tabimg2 = tabimg2.resize((lb,bd), Image.ANTIALIAS)
+timg2 = ImageTk.PhotoImage(tabimg2)
+
+tabimg3 = Image.open("Assets/yt.png")
+tabimg3 = tabimg3.resize((lb,bd), Image.ANTIALIAS)
+timg3 = ImageTk.PhotoImage(tabimg3)
+
+tabimg4 = Image.open("Assets/fb.png")
+tabimg4 = tabimg4.resize((lb,bd), Image.ANTIALIAS)
+timg4 = ImageTk.PhotoImage(tabimg4)
+
+tabimg5 = Image.open("Assets/i.png")
+tabimg5 = tabimg5.resize((lb,bd), Image.ANTIALIAS)
+timg5 = ImageTk.PhotoImage(tabimg5)
+
 tab4 = ttk.Frame(tabControl)
-tabControl.add(tab4, text='WhatsApp-MessageSender')
+tabControl.add(tab4, text='WhatsApp-MessageSender', image=timg1, compound='left')
 
 tab5 = ttk.Frame(tabControl)
-tabControl.add(tab5,text='Fast-YoutubeSearch')
+tabControl.add(tab5,text='Fast-YoutubeSearch', image=timg2, compound='left')
 
 tab1 = ttk.Frame(tabControl)        # Tab1 - Youtube
-tabControl.add(tab1, text='Youtube-Downloader')
+tabControl.add(tab1, text='Youtube-Downloader', image=timg3, compound='left')
 
 tab2 = ttk.Frame(tabControl)        # Tab2 - Facebook
-tabControl.add(tab2, text='Facebook-Downloader')
+tabControl.add(tab2, text='Facebook-Downloader', image=timg4, compound='left')
 
 tab3 = ttk.Frame(tabControl)        # Tab3 - About
-tabControl.add(tab3, text='About')
+tabControl.add(tab3, text='About', image=timg5, compound='left')
 
 tabControl.pack()
 
 top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
 top.title("FYIT Download Manager :")  # Title Label
-top.geometry("965x500+100+100")  # Screen Size
-
-
+top.geometry("800x520+100+100")  # Screen Size
 
 photo = PhotoImage(file="Assets/youtube_bg.png")  # Tab1 Background
 w = Label(tab1, image=photo)
@@ -154,7 +170,6 @@ w2 = Label(tab2, image=photo2)
 w2.pack()
 
 top.resizable(0, 0)     # Disable the Maximize & Minimize option
-
 
 var1 = StringVar()
 # Entry Widget for Youtube Downloader Tab
@@ -175,6 +190,7 @@ quit_button = Button(tab1,
 quit_button.place(x=60, y=400, width=200, height=30)
 
 # ----------------------- Auto URL Paste Functions --------------------------
+
 temp = clipboard.paste()
 url.insert('end', temp)
 url_fb.insert('end', temp)
@@ -215,12 +231,13 @@ new = 1
 url1 = "https://bit.ly/site-fyit"
 res_url = "https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/releases/download/V3.0/FYI.DOWNLOAD.EXE"
 
-
 # -------------------Youtube Function Call-----------------------------------
+
 def get_fetch():
     resolution = Rvideo.get()
     Select = A_Video.get()
     Selection = A_Audio.get()
+
     try:
         update_check()
     except r.exceptions.HTTPError as err:
@@ -236,11 +253,13 @@ def get_fetch():
         dirname = filedialog.askdirectory(parent=tab1,
                                           initialdir="/",
                                           title='Please select a directory:')
+
         if dirname:
             try:
                 # Youtube Video with Resolution
                 if resolution <= 3:
                     yt = pytube.YouTube(var1.get())
+
                     if resolution == 1:
                         progress_bar = ttk.Progressbar(tab1,
                                                        orient='horizontal',
@@ -254,6 +273,7 @@ def get_fetch():
                         video = yt.streams.get_by_itag(22)
                         video.download(dirname)
                         messagebox.showinfo("Downloaded. ", "Thank You..")
+
                     elif resolution == 2:
                         progress_bar = ttk.Progressbar(tab1,
                                                        orient='horizontal',
@@ -265,6 +285,7 @@ def get_fetch():
                         video = yt.streams.first()
                         video.download(dirname)
                         messagebox.showinfo("Downloaded. ", "Thank You..")
+
                     elif resolution == 3:
                         progress_bar = ttk.Progressbar(tab1,
                                                        orient='horizontal',
@@ -295,6 +316,7 @@ def get_fetch():
                 if Selection <= 2:
                     link = YouTube(var1.get())
                     format_a = link.streams.filter(only_audio=True).all()
+
                     if Selection == 1:  # mp4
                         progress_bar = ttk.Progressbar(tab1,
                                                        orient='horizontal',
@@ -305,6 +327,7 @@ def get_fetch():
                         messagebox.showinfo("Download", "Downloading...")
                         format_a[0].download(dirname)
                         messagebox.showinfo("Downloaded. ", "Thank You..")
+
                     elif Selection == 2:  # webm
                         progress_bar = ttk.Progressbar(tab1,
                                                        orient='horizontal',
@@ -449,7 +472,6 @@ quit_button = Button(tab2,
                          cursor='hand2',
                          command=close_btn)
 quit_button.place(x=60, y=400, width=200, height=30)    # Quit_button placed in tab2
-
 fb_label = Label(tab2,
                  text="Enter the Link to Download",
                  font=large_font,
@@ -471,6 +493,7 @@ def FacebookDownload():         # FacebookDownloader Main Fuction
         dirname = filedialog.askdirectory(parent=tab2,
                                           initialdir="/",
                                           title='Please select a directory:')
+
         if dirname:
             hdvideo_url = re.search('hd_src:"(.+?)"', html.text)[1]
         try:
@@ -594,11 +617,12 @@ frame2 = HtmlFrame(master=tab3, width=640, horizontal_scrollbar="auto")     # Ta
 frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
 frame2.set_content(open("Assets/help.html", "r").read())
-# ----------------------------Fast Youtube Search ----------------
-cust_font = font = ('Consolas', 14)
-width = 500
-height = 400
 
+# ----------------------------Fast Youtube Search ----------------
+
+cust_font = font = ('Consolas', 16)
+width = 800
+height = 500
 img1 = Image.open("Assets/ytsearch_bg.png")
 img1 = img1.resize((width, height), Image.ANTIALIAS)
 photoImg1 = ImageTk.PhotoImage(img1)
@@ -607,27 +631,26 @@ wb1.pack()
 
 Name_Label = Label(tab5, font=cust_font,
                    text="Fast Search in Youtube", bg='#232621', fg='#ffffff')  
-Name_Label.place(x=105, y=100,  width=300, height=30)
+Name_Label.place(x=130, y=140,  width=280, height=30)
 
 Search_Key = StringVar()
 KeyEntry = Entry(tab5, font=cust_font, textvariable=Search_Key)
-KeyEntry.place(x=105, y=160, width=320, height=30)
+KeyEntry.place(x=130, y=200, width=550, height=30)
 
 def Key():
     pywhatkit.playonyt(Search_Key.get())
 
-
 Search_Button = Button(tab5, font=cust_font, text="Search", command=Key)
-Search_Button.place(x=280, y=280, width=150, height=30)
+Search_Button.place(x=530, y=320, width=150, height=30)
 tab5.update()
 
-
 # ----------------------- Whatsapp Screen-----------------------------------
-cust_font = font = ('Consolas', 12)
-width = 500
-height = 400
+
+cust_font1 = font = ('Consolas', 14)
+width1 = 800
+height1 = 500
 img = Image.open("Assets/whatsapp_bg.png")
-img = img.resize((width, height), Image.ANTIALIAS)
+img = img.resize((width1, height1), Image.ANTIALIAS)
 photoImg = ImageTk.PhotoImage(img)
 wb = Label(tab4, image=photoImg)
 wb.pack()
@@ -638,55 +661,58 @@ hour = IntVar()
 minutes = IntVar()
 
 Number = Label(tab4, text="Enter the Mobile No",
-                    font=cust_font, bg="#1B1B19", fg="#ffffff")
-Number.place(x=55, y=70)
+                    font=cust_font1, bg="#1B1B19", fg="#ffffff")
+Number.place(x=100, y=70, width=200, height=30)
 
 Message = Label(tab4, text="Enter the Message",
-                    font=cust_font, bg="#1B1B19", fg="#ffffff")
-Message.place(x=55, y=120)
+                    font=cust_font1, bg="#1B1B19", fg="#ffffff")
+Message.place(x=100, y=120, width=185, height=30)
 
 hourlabel = Label(tab4, text="Enter Schedule Time",
-                    font=cust_font, bg="#1B1B19", fg="#ffffff")
-hourlabel.place(x=55, y=220)
+                    font=cust_font1, bg="#1B1B19", fg="#ffffff")
+hourlabel.place(x=100, y=260, width=210, height=30)
 
 Shutdown_label = Label(tab4, text="Enter Shutdown Timer",
-                    font=cust_font, bg="#1B1B19", fg="#ffffff")
-Shutdown_label.place(x=55, y=270)
+                    font=cust_font1, bg="#1B1B19", fg="#ffffff")
+Shutdown_label.place(x=100, y=310, width=220, height=30)
 
 hrs_label = Label(tab4, text="hrs",
-                    font=cust_font, bg="#1B1B19", fg="#ffffff")
-hrs_label.place(x=300, y=220)
+                    font=cust_font1, bg="#1B1B19", fg="#ffffff")
+hrs_label.place(x=400, y=260, width=100, height=30)
 
 mins_label = Label(tab4, text="mins.",
-                     font=cust_font, bg="#1B1B19", fg="#ffffff")
-mins_label.place(x=390, y=220)
+                     font=cust_font1, bg="#1B1B19", fg="#ffffff")
+mins_label.place(x=560, y=260, width=100, height=30)
 
 shut_label = Label(tab4, text="seconds.",
-                   font=cust_font, bg="#1B1B19", fg="#ffffff")
-shut_label.place(x=340, y=270)
+                   font=cust_font1, bg="#1B1B19", fg="#ffffff")
+shut_label.place(x=430, y=310, width=100, height=30)
 
 Entrynum = Entry(tab4, textvariable=MobNum, font=cust_font)
 Entrynum.insert(0,"+91")
-Entrynum.place(x=250, y=70)
+Entrynum.place(x=350, y=70, width=300, height=30)
 
 Entrymsg = Text(tab4, font=cust_font)
-Entrymsg.place(x=250, y=120, width=185, height=70)
+Entrymsg.place(x=350, y=120, width=300, height=120)
 
 hours = Spinbox(tab4, textvariable=hour, font=cust_font, from_=0, to=23)
-hours.place(x=250, y=220, width=50)
+hours.place(x=350, y=260, width=70, height=30)
 
 mins = Spinbox(tab4, textvariable=minutes, font=cust_font, from_=0, to=59)
-mins.place(x=340, y=220, width=50)
+mins.place(x=500, y=260, width=70, height=30)
 
 sleep = IntVar()
+
 def shut_timer():
     sh_time = sleep.get()
+
     if sh_time == 0:
         try:
             pywhatkit.cancelShutdown()
             messagebox.showinfo("Shutdown Timer", "Shutdown timer is not fixed")
         except NameError:
             messagebox.showinfo("Shutdown Timer", "Shutdown timer is not fixed")
+
     elif sh_time <= 86400:
         messagebox.showinfo("Shutdown Timer", "When we sent WhatsApp message PC will shutdown after fixed timer")
         pywhatkit.shutdown(time=sh_time)
@@ -697,19 +723,20 @@ def go():
     messagebox.showinfo("AutoWhatsappMessage",
     "Will open web.whatsapp.com at before 1 minute of Scheduled time and message \
     will be send Automatically at Scheduled time exactly Given")
-    
+
     try:
         num = MobNum.get()
         msg = Entrymsg.get("1.0", "end-1c")
         hr = hour.get()
         mini = minutes.get()
+
         if (1 ==1):
             try:
                 import pywhatkit
             except Exception as e:
-                messagebox.showwarning("FYIT","No Internet.. Connect to Internet")
+                messagebox.showwarning("Internet is Slow", "Check Internet Connection")
         else:
-            messagebox.showwarning("FYIT","No Internet")
+            messagebox.showwarning("Internet is Slow", "Check Internet Connection")
         shut_timer()
         pywhatkit.sendwhatmsg(num, msg, hr, mini)
     except pywhatkit.CallTimeException:
@@ -720,15 +747,14 @@ def go():
                              "Please Ensure the mobile number & Coutry code.")
 
 sleep_time = Spinbox(tab4, textvariable=sleep, font=cust_font, from_=0, to=86399)
-sleep_time.place(x=250, y=270, width=80)
+sleep_time.place(x=350, y=310, height=30, width=80)
 
 GoCheck = Button(tab4, text="Start Schedule", command=go, font=cust_font)
-GoCheck.place(x=160, y=345)
+GoCheck.place(x=300, y=405)
 
 label = Label(tab4,
         text="Time must be in 24 hours Format & Country Code is Must.",
-        font=cust_font, bg="#1B1B19", fg="#ffffff")
-
+        font=cust_font1, bg="#1B1B19", fg="#ffffff")
 
 infinity = 1
 while infinity == 1:
@@ -739,11 +765,11 @@ while infinity == 1:
         if xpos == 500:
             xpos = 0
         tab4.update()
+
 # ----------------------------- Close Function -------------------------------
 
 top.config(bg='black')
 top.mainloop()
-
 
 def on_close():
     top.destroy()
