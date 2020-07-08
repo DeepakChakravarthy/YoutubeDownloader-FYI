@@ -28,8 +28,7 @@ top = Tk()
 # - Top is Main Screen  Intialization
 # - Menu bar Intialization
 def Whatsapp_History():
-        import WA_history
-
+    import whistory
 def openweb():      # Software Update response
     webbrowser.open(url1, new=new)
 
@@ -74,7 +73,7 @@ if (1 ==1):
     messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
 else:
     messagebox.showwarning("No Internet or Internet is Slow", "Check Internet Connection")
-    
+
 menubar = Menu(top)
 menubar.add_cascade(label="Whatsapp History", command=Whatsapp_History)
 menubar.add_cascade(label="Cancel Shutdown", command=Cancel_Shutdown)
@@ -95,7 +94,7 @@ DisFont = font = ('', 14)  # style='my.default'
 SubFont = font = ('Consolas', 12)  # style='my.sub'
 tab_font = font = ('Consolas', 12)  # Tab font style
 
-# Tab Control Style Config 
+# Tab Control Style Config
 tab_show = "#90B3DD"
 tab_select = "#C8D9EE"
 
@@ -121,23 +120,23 @@ tabControl = ttk.Notebook(top, style='lefttab.TNotebook')
 lb = 20
 bd = 20
 
-tabimg1 = Image.open("Assets/WA.png")
+tabimg1 = Image.open("assets/wa.png")
 tabimg1 = tabimg1.resize((lb,bd), Image.ANTIALIAS)
 timg1 = ImageTk.PhotoImage(tabimg1)
 
-tabimg2 = Image.open("Assets/fs.png")
+tabimg2 = Image.open("assets/fs.png")
 tabimg2 = tabimg2.resize((lb,bd), Image.ANTIALIAS)
 timg2 = ImageTk.PhotoImage(tabimg2)
 
-tabimg3 = Image.open("Assets/yt.png")
+tabimg3 = Image.open("assets/yt.png")
 tabimg3 = tabimg3.resize((lb,bd), Image.ANTIALIAS)
 timg3 = ImageTk.PhotoImage(tabimg3)
 
-tabimg4 = Image.open("Assets/fb.png")
+tabimg4 = Image.open("assets/fb.png")
 tabimg4 = tabimg4.resize((lb,bd), Image.ANTIALIAS)
 timg4 = ImageTk.PhotoImage(tabimg4)
 
-tabimg5 = Image.open("Assets/i.png")
+tabimg5 = Image.open("assets/i.png")
 tabimg5 = tabimg5.resize((lb,bd), Image.ANTIALIAS)
 timg5 = ImageTk.PhotoImage(tabimg5)
 
@@ -158,19 +157,19 @@ tabControl.add(tab3, text='About', image=timg5, compound='left')
 
 tabControl.pack()
 
-top.iconbitmap('Assets/YoutubeDownloader.ico')  # Window Title Icon
+top.iconbitmap('assets/youtubedownloader.ico')  # Window Title Icon
 top.title("FYIT Download Manager :")  # Title Label
 top.geometry("800x520+100+100")  # Screen Size
 
-photo = PhotoImage(file="Assets/youtube_bg.png")  # Tab1 Background
+photo = PhotoImage(file="assets/youtubebg.png")  # Tab1 Background
 w = Label(tab1, image=photo)
 w.pack()
 
-photo2 = PhotoImage(file="Assets/facebook_bg.png")  # Tab2 Background
+photo2 = PhotoImage(file="assets/facebookbg.png")  # Tab2 Background
 w2 = Label(tab2, image=photo2)
 w2.pack()
 
-top.resizable(0, 0)     # Disable the Maximize & Minimize option
+top.resizable(0,  0)     # Disable the Maximize & Minimize option
 
 var1 = StringVar()
 # Entry Widget for Youtube Downloader Tab
@@ -536,7 +535,7 @@ downbtnfb.place(x=500, y=400, width=200, height=30)    # Download placed in Tab2
 
 # ======================= About Tab Control ===================================
 
-def check_it(hyper_link):  
+def check_it(hyper_link):
     # About tab Redirect Link (Frame1)
     webbrowser.open_new(hyper_link)
 
@@ -545,7 +544,7 @@ tab3_style = ttk.Style()
 frame1 = tk.Frame(master=tab3, width=260)           # Tab3_Frame1
 frame1.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
-imge = PhotoImage(file='Assets/side_bar.png')
+imge = PhotoImage(file='assets/sidebar.png')
 pht = Label(frame1, image=imge)
 pht.pack()
 
@@ -618,21 +617,21 @@ link_5.config(highlightthickness=0)
 frame2 = HtmlFrame(master=tab3, width=640, horizontal_scrollbar="auto")     # Tab3_Frame2
 frame2.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
 
-frame2.set_content(open("Assets/help.html", "r").read())
+frame2.set_content(open("assets/help.html", "r").read())
 
 # ----------------------------Fast Youtube Search ----------------
 
 cust_font = font = ('Consolas', 16)
 width = 800
 height = 500
-img1 = Image.open("Assets/ytsearch_bg.png")
+img1 = Image.open("assets/ytsearchbg.png")
 img1 = img1.resize((width, height), Image.ANTIALIAS)
 photoImg1 = ImageTk.PhotoImage(img1)
 wb1 = Label(tab5, image=photoImg1)
 wb1.pack()
 
 Name_Label = Label(tab5, font=cust_font,
-                   text="Fast Search in Youtube", bg='#232621', fg='#ffffff')  
+                   text="Fast Search in Youtube", bg='#232621', fg='#ffffff')
 Name_Label.place(x=130, y=140,  width=280, height=30)
 
 Search_Key = StringVar()
@@ -647,7 +646,7 @@ def Key():
     Fs_Search = Video(Search_Key.get())
     Out = Fs_Search.search()
     webbrowser.open_new(Out)
-    
+
 
 Search_Button = Button(tab5, font=cust_font, text="Search", command=Key)
 Search_Button.place(x=530, y=320, width=150, height=30)
@@ -658,7 +657,7 @@ tab5.update()
 cust_font1 = font = ('Consolas', 14)
 width1 = 800
 height1 = 500
-img = Image.open("Assets/whatsapp_bg.png")
+img = Image.open("assets/whatsappbg.png")
 img = img.resize((width1, height1), Image.ANTIALIAS)
 photoImg = ImageTk.PhotoImage(img)
 wb = Label(tab4, image=photoImg)
