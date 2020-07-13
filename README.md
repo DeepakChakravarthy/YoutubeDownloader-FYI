@@ -15,21 +15,21 @@
 **FEATUERES OF FYIT DOWNLOADER**
 
 	1. AutoWhatsApp :
-		- Schedule the time to send the Message which will automatically Shutdown.
+	    - Schedule the time to send the Message which will automatically Shutdown.
 		
 	2. YouTube :
-		- Fast Youtube Search:
-			- Fast Youtube Search Saves the Time of Searching A particular video from the list
-			- Fast Youtube Search Works Based on the Perfect Match of Keyword
+	    - Fast Youtube Search:
+		- Fast Youtube Search Saves the Time of Searching A particular video from the list.
+		- Fast Youtube Search Works Based on the Perfect Match of Keyword.
 			
-		- Youtube Download Manager:
-			- Direct Youtube Video Download with URL
-			- Completely Download Youtube Playlist
-			- Download Only Audio From Youtube Video.
+	    - Youtube Download Manager:
+		- Direct Youtube Video Download with URL.
+		- Completely Download Youtube Playlist.
+		- Download Only Audio From Youtube Video.
             
 	3. Facebook :
-		- Direct Facebook Video Download with URL
-		- Right Click on Facebook Timeline video Right Click & Copy the URL or Go to " Embed " Copy URL Shown in Embed page
+	    - Direct Facebook Video Download with URL.
+	    - Right Click on Facebook Timeline video Right Click & Copy the URL or Go to " Embed " Copy URL Shown in Embed page.
 	
 ---------------------------------------------------------
 
@@ -44,7 +44,7 @@ To Run Local place the Required Folder Files and Main Python Files in the Same L
 **Upcoming Features**
 
 	We Welcome the ideas of Fyit New Features. 
-	Mail us on fyit@email.com.
+	Mail us on fyit@email.com
 	
 ----------------------------------------------------------
 
