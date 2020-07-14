@@ -1,7 +1,7 @@
 
 
 
-<h1>YoutubeDownloader-FYI</h1> 
+<h1>FYIT Downloader</h1> 
 
 [![GitHub license](https://img.shields.io/github/license/DeepakChakravarthy/YoutubeDownloader-FYI)](https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/LICENSE)
 [![Run on Repl.it](https://repl.it/badge/github/DeepakChakravarthy/YoutubeDownloader-FYI)](https://repl.it/github/DeepakChakravarthy/YoutubeDownloader-FYI)
@@ -11,29 +11,44 @@
 
 
 ---------------------------------------------------------
-**REQUIRED PACKAGES**
-* **Pytube**
 
-To Install the Package `pip install pytube3`
+**FEATUERES OF FYIT DOWNLOADER**
 
---------------------------------------------------------
-**FEATUERES OF YOUTUBE DOWNLOADER**
-
-	1. Direct Youtube Video Download with URL
-	2. Completely Download Youtube Playlist
-	3. Download Only Audio From Youtube Video.
+	1. AutoWhatsApp :
+	    - Schedule the time to send the Message which will automatically Shutdown.
+		
+	2. YouTube :
+	    - Fast Youtube Search:
+		- Fast Youtube Search Saves the Time of Searching A particular video from the list.
+		- Fast Youtube Search Works Based on the Perfect Match of Keyword.
+			
+	    - Youtube Download Manager:
+		- Direct Youtube Video Download with URL.
+		- Completely Download Youtube Playlist.
+		- Download Only Audio From Youtube Video.
+            
+	3. Facebook :
+	    - Direct Facebook Video Download with URL.
+	    - Right Click on Facebook Timeline video Right Click & Copy the URL or Go to " Embed " Copy URL Shown in Embed page.
+	
 ---------------------------------------------------------
+
 To Run Local place the Required Folder Files and Main Python Files in the Same Location
 
-<h2>------------Demo of Running------------</h3>
+<h2> A Quick View </h3>
 
-<img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/ScreenRec.gif?raw=true" width="600" height="350">
+<img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/dev-ram/ScreenShot/screendemo.gif?raw=true" width="800" height="420">
 
 ----------------------------------------------------------
+
 **Upcoming Features**
 
-	1.Facebook Video Downloader
-	2.Tiktok Video Downloader
-	3.Twitter Resourse Downloader
+	We Welcome the ideas of Fyit New Features. 
+	Mail us on fyit@email.com
+	
 ----------------------------------------------------------
-<h3><a href="https://edoc-bot.github.io/fyi/">Click here to Visit Us..</a></h3>
+
+<h3>Click below to visit us..</h3>
+<h3><a href="https://fyit.noads.biz/">fyit.noads.biz</a></h3>
+
+-----------------------------------------------------------
