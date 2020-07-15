@@ -36,7 +36,7 @@
 
 To Run Local place the Required Folder Files and Main Python Files in the Same Location
 
-<h2> A Quick View </h3>
+<h3> A Quick View </h3>
 
 <img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/screendemo.gif?raw=true" width="800" height="420">
 
