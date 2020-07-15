@@ -12,7 +12,6 @@
 <h2>Downloading Site</h2>
 <a href="https://sourceforge.net/p/fyit/"><img alt="Download FYIT" src="https://sourceforge.net/sflogo.php?type=13&group_id=3225284" ></a>
 
-<a href="https://sourceforge.net/projects/fyit/files/latest/download"><img alt="Download FYIT" src="https://img.shields.io/sourceforge/dt/fyit.svg" ></a>
 
 **FEATUERES OF FYIT DOWNLOADER**
 
