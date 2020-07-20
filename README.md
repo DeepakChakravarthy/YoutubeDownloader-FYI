@@ -10,8 +10,9 @@
 [![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master) [![Join the chat at https://gitter.im/FYIT-DOWNLOADER/DEV-FYI](https://badges.gitter.im/FYIT-DOWNLOADER/DEV-FYI.svg)](https://gitter.im/FYIT-DOWNLOADER/DEV-FYI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ---------------------------------------------------------
 <h2>Downloading Site</h2>
-<a href="https://sourceforge.net/p/fyit/"><img alt="Download FYIT" src="https://sourceforge.net/sflogo.php?type=13&group_id=3225284"> <href="https://sourceforge.net/projects/fyit/files/latest/download"><img alt="Download FYIT Downloader" src="https://img.shields.io/sourceforge/dd/fyit.svg" ></a>
 
+[![Download FYIT Downloader](https://sourceforge.net/sflogo.php?type=14&group_id=3225284)](https://sourceforge.net/p/fyit/)
+[![Download FYIT Downloader](https://img.shields.io/sourceforge/dw/fyit.svg)](https://sourceforge.net/projects/fyit/files/latest/download)
 
 
 **FEATUERES OF FYIT DOWNLOADER**
