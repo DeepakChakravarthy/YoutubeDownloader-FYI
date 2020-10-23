@@ -8,9 +8,12 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi/badge)](https://www.codefactor.io/repository/github/deepakchakravarthy/youtubedownloader-fyi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeepakChakravarthy/YoutubeDownloader-FYI/build-status/master) [![Join the chat at https://gitter.im/FYIT-DOWNLOADER/DEV-FYI](https://badges.gitter.im/FYIT-DOWNLOADER/DEV-FYI.svg)](https://gitter.im/FYIT-DOWNLOADER/DEV-FYI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
 ---------------------------------------------------------
+<h2>Downloading Site</h2>
+
+[![Download FYIT Downloader](https://sourceforge.net/sflogo.php?type=14&group_id=3225284)](https://sourceforge.net/p/fyit/)
+[![Download FYIT Downloader](https://img.shields.io/sourceforge/dw/fyit.svg)](https://sourceforge.net/projects/fyit/files/latest/download)
+
 
 **FEATUERES OF FYIT DOWNLOADER**
 
@@ -35,9 +38,9 @@
 
 To Run Local place the Required Folder Files and Main Python Files in the Same Location
 
-<h2> A Quick View </h3>
+<h3> A Quick View </h3>
 
-<img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/dev-ram/ScreenShot/screendemo.gif?raw=true" width="800" height="420">
+<img src="https://github.com/DeepakChakravarthy/YoutubeDownloader-FYI/blob/master/ScreenShot/screendemo.gif?raw=true" width="800" height="420">
 
 ----------------------------------------------------------
 
